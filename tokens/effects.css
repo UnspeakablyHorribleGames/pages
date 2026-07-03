@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Effects — shadows, glows, textures — Unspeakably Horrible Games
+   Deep, warm shadows; soft absinthe/gilt glows for the "eldritch" moments.
+   ========================================================================== */
+
+:root {
+  /* --- Elevation shadows (warm-black, never neutral gray) --- */
+  --shadow-sm:  0 1px 2px rgba(6, 3, 5, 0.5);
+  --shadow-md:  0 4px 14px rgba(6, 3, 5, 0.55), 0 1px 3px rgba(6, 3, 5, 0.4);
+  --shadow-lg:  0 16px 40px rgba(4, 2, 4, 0.62), 0 3px 10px rgba(4, 2, 4, 0.45);
+  --shadow-xl:  0 30px 80px rgba(2, 1, 2, 0.7), 0 8px 24px rgba(2, 1, 2, 0.5);
+
+  /* --- Inset / carved --- */
+  --shadow-inset: inset 0 1px 0 rgba(237, 228, 211, 0.05),
+                  inset 0 -1px 2px rgba(0, 0, 0, 0.4);
+
+  /* --- Glows (the green-fairy shimmer & gaslamp gilding) --- */
+  --glow-sm-absinthe: 0 0 12px var(--glow-absinthe);
+  --glow-lg-absinthe: 0 0 28px var(--glow-absinthe), 0 0 6px rgba(159,190,59,0.6);
+  --glow-gold-soft:   0 0 20px var(--glow-gold);
+
+  /* --- Gilt hairline ring (framed like a gilded book cover) --- */
+  --ring-gilt: 0 0 0 1px var(--border-gilt);
+
+  /* --- Focus ring --- */
+  --ring-focus: 0 0 0 3px rgba(187, 216, 97, 0.35);
+
+  /* --- Vignette (page-level atmosphere) --- */
+  --vignette: radial-gradient(120% 90% at 50% -10%,
+                transparent 40%, rgba(0,0,0,0.35) 100%); /* @kind other */
+
+  /* --- Film grain (data-URI SVG turbulence; overlay at low opacity) --- */
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); /* @kind other */
+}
+
+/* --- Utility: ambient candle-flicker on glowing elements --- */
+@keyframes uhg-flicker {
+  0%, 100% { opacity: 1; }
+  45%      { opacity: 0.86; }
+  55%      { opacity: 0.94; }
+  70%      { opacity: 0.8; }
+}
+
+/* --- Utility: slow drift for decorative tentacle/ornament layers --- */
+@keyframes uhg-drift {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-6px) rotate(0.6deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}

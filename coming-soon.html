@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Unspeakably Horrible Games</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: var(--bg-page);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  ::selection { background: var(--accent-soft); }
+  .atmos { position: fixed; inset: 0; pointer-events: none; }
+  .grain { position: fixed; inset: 0; pointer-events: none; background-image: var(--texture-grain); opacity: 0.18; mix-blend-mode: overlay; }
+  .glow { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(70% 90% at 50% -10%, rgba(159,190,59,0.12), transparent 55%); }
+  .vig { position: fixed; inset: 0; pointer-events: none; background: var(--vignette); }
+  main {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin-bottom: 28px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(46px, 9vw, 104px);
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    color: var(--text-strong);
+    margin: 0;
+  }
+  .wordmark em { font-style: normal; color: var(--text-accent); text-shadow: var(--glow-sm-absinthe); }
+  .games {
+    font-family: var(--font-mono);
+    font-size: clamp(12px, 2vw, 15px);
+    letter-spacing: .5em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin: 18px 0 0;
+    padding-left: .5em;
+  }
+  .rule { width: 44px; height: 1px; background: var(--border-gilt); margin: 40px auto 34px; }
+  .status {
+    font-family: var(--font-grimoire);
+    font-style: italic;
+    font-size: clamp(20px, 3.4vw, 30px);
+    line-height: 1.4;
+    color: var(--text-body);
+    max-width: 22ch;
+    margin: 0 auto;
+  }
+  .sub {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 46ch;
+    margin: 22px auto 0;
+  }
+  .contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--text-strong);
+    text-decoration: none;
+    padding: 13px 22px;
+    border: 1px solid var(--border-gilt);
+    border-radius: var(--radius-sm);
+    background: var(--surface-card);
+    transition: border-color var(--dur-fast, .15s) ease, color var(--dur-fast, .15s) ease, box-shadow var(--dur-fast, .15s) ease;
+  }
+  .contact:hover { border-color: var(--accent); color: var(--text-accent); box-shadow: var(--glow-sm-absinthe); }
+  .mascot {
+    position: fixed;
+    right: clamp(12px, 4vw, 60px);
+    bottom: -12px;
+    width: clamp(72px, 12vw, 116px);
+    opacity: 0.85;
+    z-index: 1;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,.55));
+    animation: uhg-drift 7s ease-in-out infinite;
+  }
+  footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 22px 24px 26px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border-subtle);
+    background: color-mix(in srgb, var(--surface-sunken) 60%, transparent);
+  }
+  @media (prefers-reduced-motion: reduce) { .mascot { animation: none; } }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0A0608">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A0608"/>
+    <text x="600" y="410" font-family="Georgia, serif" font-size="118" fill="#EDE4D3" text-anchor="middle">Unspeakably <tspan fill="#9FBE3B">Horrible</tspan></text>
+    <text x="600" y="492" font-family="monospace" font-size="34" fill="#C9A83B" text-anchor="middle" letter-spacing="18">GAMES</text>
+    <text x="600" y="612" font-family="Georgia, serif" font-size="72" fill="#9FBE3B" text-anchor="middle">❦</text>
+  </svg>
+</template>
+
+<div class="atmos"></div>
+<div class="glow"></div>
+<div class="grain"></div>
+<div class="vig"></div>
+
+<main>
+  <div class="eyebrow">An independent game studio · est. in a dim room</div>
+  <h1 class="wordmark">Unspeakably <em>Horrible</em></h1>
+  <div class="games">Games</div>
+
+  <div class="rule"></div>
+
+  <p class="status">"A website is coming. So is a game."</p>
+  <p class="sub">We're a few friends making cozy, cursed little games. There's nothing to show just yet — but there will be. Probably fine.</p>
+
+  <a class="contact" href="mailto:unspeakablyhorrible@gmail.com">Say something unspeakable&nbsp;→</a>
+</main>
+
+<img class="mascot" src="assets/mascot-placeholder.png" alt="" aria-hidden="true" />
+
+<footer>
+  © <span id="yr"></span> Unspeakably Horrible Games · No eldritch entities were harmed. A few were mildly inconvenienced.
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

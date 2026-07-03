@@ -1,0 +1,64 @@
+/* ==========================================================================
+   Spacing, sizing & layout tokens — Unspeakably Horrible Games
+   Base unit: 4px. Generous, salon-like breathing room.
+   ========================================================================== */
+
+:root {
+  /* --- Spacing scale (4px base) --- */
+  --space-0:  0;
+  --space-1:  0.25rem;  /* 4  */
+  --space-2:  0.5rem;   /* 8  */
+  --space-3:  0.75rem;  /* 12 */
+  --space-4:  1rem;     /* 16 */
+  --space-5:  1.5rem;   /* 24 */
+  --space-6:  2rem;     /* 32 */
+  --space-7:  3rem;     /* 48 */
+  --space-8:  4rem;     /* 64 */
+  --space-9:  6rem;     /* 96 */
+  --space-10: 8rem;     /* 128 */
+
+  /* --- Radii — mostly soft; the salon has few hard edges --- */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+  --radius-card: var(--radius-lg);
+  --radius-control: var(--radius-sm);
+
+  /* --- Border widths --- */
+  --border-hair: 1px;
+  --border-thin: 1.5px;
+  --border-thick: 2px;
+
+  /* --- Layout --- */
+  --container-sm: 640px;
+  --container-md: 860px;
+  --container-lg: 1100px;
+  --container-xl: 1320px;
+  --gutter: var(--space-5);
+
+  /* --- Control sizing --- */
+  --control-h-sm: 32px;
+  --control-h-md: 42px;
+  --control-h-lg: 52px;
+
+  /* --- Z layers --- */
+  --z-base: 0; /* @kind other */
+  --z-raised: 10; /* @kind other */
+  --z-sticky: 100; /* @kind other */
+  --z-overlay: 1000; /* @kind other */
+  --z-modal: 1100; /* @kind other */
+  --z-toast: 1200; /* @kind other */
+  --z-tooltip: 1300; /* @kind other */
+
+  /* --- Motion — candlelit, unhurried; nothing bounces --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in: cubic-bezier(0.5, 0, 0.75, 0); /* @kind other */
+  --dur-fast: 120ms; /* @kind other */
+  --dur-base: 220ms; /* @kind other */
+  --dur-slow: 420ms; /* @kind other */
+  --dur-flicker: 2600ms; /* @kind other */
+}

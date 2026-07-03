@@ -1,0 +1,73 @@
+<!-- @dsCard group="Studio Site" viewport="1280x760" name="Studio Marketing Site" subtitle="Home · Games · About · The Coven — interactive" -->
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Unspeakably Horrible Games</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  html, body { margin: 0; background: var(--bg-page); color: var(--text-body); }
+  * { box-sizing: border-box; }
+  ::selection { background: var(--accent-soft); }
+  #app { min-height: 100vh; }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0A0608">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A0608"/>
+    <text x="600" y="420" font-family="Georgia, serif" font-size="120" fill="#EDE4D3" text-anchor="middle">Unspeakably <tspan fill="#9FBE3B">Horrible</tspan></text>
+    <text x="600" y="500" font-family="monospace" font-size="34" fill="#C9A83B" text-anchor="middle" letter-spacing="18">GAMES</text>
+    <text x="600" y="600" font-family="Georgia, serif" font-size="80" fill="#9FBE3B" text-anchor="middle">❦</text>
+  </svg>
+</template>
+<div id="app"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+<script src="mascot.js"></script>
+<script type="text/babel" data-presets="react" src="Bits.jsx"></script>
+<script type="text/babel" data-presets="react" src="Data.jsx"></script>
+<script type="text/babel" data-presets="react" src="Header.jsx"></script>
+<script type="text/babel" data-presets="react" src="Footer.jsx"></script>
+<script type="text/babel" data-presets="react" src="HomeScreen.jsx"></script>
+<script type="text/babel" data-presets="react" src="GamesScreen.jsx"></script>
+<script type="text/babel" data-presets="react" src="AboutScreen.jsx"></script>
+<script type="text/babel" data-presets="react" src="TeamScreen.jsx"></script>
+<script type="text/babel" data-presets="react">
+  function App() {
+    const [view, setView] = React.useState("home");
+    const [theme, setTheme] = React.useState("dark");
+    React.useEffect(() => {
+      document.documentElement.setAttribute("data-theme", theme);
+      window.scrollTo(0, 0);
+    }, [theme]);
+    React.useEffect(() => { window.scrollTo({ top: 0 }); }, [view]);
+    const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+    const { Header, Footer, HomeScreen, GamesScreen, AboutScreen, TeamScreen } = window;
+    return (
+      <React.Fragment>
+        <Header view={view} setView={setView} theme={theme} toggleTheme={toggleTheme} />
+        <main id="app-main">
+          {view === "home" && <HomeScreen setView={setView} />}
+          {view === "games" && <GamesScreen />}
+          {view === "about" && <AboutScreen />}
+          {view === "team" && <TeamScreen />}
+        </main>
+        <Footer setView={setView} />
+      </React.Fragment>
+    );
+  }
+  // Wait for all babel-transpiled component scripts to register on window.
+  function boot() {
+    if (!window.HomeScreen || !window.Header || !window.UnspeakablyHorribleGamesDesignSystem_e246c6) {
+      return setTimeout(boot, 30);
+    }
+    ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+  }
+  boot();
+</script>
+</body>
+</html>

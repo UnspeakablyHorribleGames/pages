@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Color tokens — Unspeakably Horrible Games
+   Dark is the brand: a candlelit absinthe salon in a forbidden library.
+   Base palette (raw values) + semantic aliases. Light theme scoped below.
+   ========================================================================== */
+
+:root {
+  /* === RAW PALETTE ======================================================== */
+
+  /* --- Void / mahogany darks (warm near-blacks) --- */
+  --void:        #100A0C;  /* deepest — page background */
+  --ink-900:     #160F12;
+  --ink-800:     #1D141A;  /* base surface */
+  --ink-700:     #241820;  /* raised surface / cards */
+  --ink-600:     #2E1F29;  /* hover surface */
+  --ink-500:     #3A2833;  /* borders on dark */
+  --ink-400:     #4C3644;
+
+  /* --- Oxblood / burgundy (secondary brand) --- */
+  --oxblood-900: #2A0C13;  /* deep burgundy panel */
+  --oxblood-800: #45121F;
+  --oxblood-700: #631A2C;
+  --oxblood-600: #8A2439;  /* primary burgundy */
+  --oxblood-500: #A83048;
+  --oxblood-400: #C6485F;  /* burgundy on dark, text-safe */
+
+  /* --- Absinthe green (SIGNATURE accent — the green fairy's glow) --- */
+  --absinthe-900:#26310F;
+  --absinthe-700:#556F1F;
+  --absinthe-600:#7A9B2E;
+  --absinthe-500:#9FBE3B;  /* core absinthe */
+  --absinthe-400:#BBD861;  /* louche — brighter, interactive */
+  --absinthe-300:#D6EC93;  /* pale absinthe / glow tint */
+
+  /* --- Antique gilt gold (tertiary — gaslamp, book gilding) --- */
+  --gilt-700:    #8A6A24;
+  --gilt-600:    #B08A34;
+  --gilt-500:    #C8A24C;  /* core gold */
+  --gilt-400:    #E0BF6C;  /* highlight gold */
+
+  /* --- Cosmic violet (used sparingly — the "otherworldly") --- */
+  --violet-700:  #3D2A57;
+  --violet-500:  #6E4A86;
+  --violet-400:  #9A72B5;
+
+  /* --- Cold eldritch teal (info / spectral) --- */
+  --teal-600:    #2C6B66;
+  --teal-400:    #57A39C;
+
+  /* --- Parchment / bone (light neutrals & ink on dark) --- */
+  --parchment:   #EDE4D3;  /* aged paper — primary text on dark */
+  --bone-300:    #D6CBB6;
+  --bone-500:    #B9AC97;  /* muted text on dark */
+  --bone-700:    #7C7062;  /* faint text / disabled */
+
+  /* --- Signal reds (danger, blood) --- */
+  --blood-600:   #B02E2A;
+  --blood-400:   #DB5A54;
+
+  /* === SEMANTIC ALIASES (DARK — default) ================================= */
+
+  /* Surfaces & structure */
+  --bg-page:        var(--void);
+  --bg-page-deep:   #0A0608;
+  --surface-base:   var(--ink-800);
+  --surface-card:   var(--ink-700);
+  --surface-raised: var(--ink-600);
+  --surface-sunken: var(--ink-900);
+  --surface-burgundy: var(--oxblood-900);
+  --surface-overlay: rgba(8, 4, 6, 0.72);   /* modal scrim */
+
+  /* Borders / dividers */
+  --border-subtle:  var(--ink-500);
+  --border-strong:  var(--ink-400);
+  --border-gilt:    rgba(200, 162, 76, 0.35);  /* gilt hairline */
+  --border-focus:   var(--absinthe-400);
+
+  /* Text */
+  --text-strong:    var(--parchment);
+  --text-body:      #DCD1BE;
+  --text-muted:     var(--bone-500);
+  --text-faint:     var(--bone-700);
+  --text-on-accent: var(--void);            /* dark ink on absinthe/gold */
+  --text-on-burgundy: var(--parchment);
+  --text-link:      var(--absinthe-400);
+  --text-link-hover:var(--absinthe-300);
+  /* brand-accent text (hero words, wordmark) — bright on dark, darkens on light */
+  --text-accent:    var(--absinthe-400);
+
+  /* Brand accents */
+  --accent:         var(--absinthe-500);    /* signature */
+  --accent-hover:   var(--absinthe-400);
+  --accent-press:   var(--absinthe-600);
+  --accent-soft:    rgba(159, 190, 59, 0.14);
+  --brand-burgundy: var(--oxblood-600);
+  --brand-gold:     var(--gilt-500);
+  --brand-violet:   var(--violet-500);
+
+  /* Semantic status */
+  --success:        var(--absinthe-500);
+  --success-fg:     var(--void);
+  --danger:         var(--blood-600);
+  --danger-fg:      var(--parchment);
+  --warning:        var(--gilt-500);
+  --warning-fg:     var(--void);
+  --info:           var(--teal-400);
+  --info-fg:        var(--void);
+
+  /* Glow (used in shadows/effects layer) */
+  --glow-absinthe:  rgba(159, 190, 59, 0.45);
+  --glow-gold:      rgba(224, 191, 108, 0.35);
+}
+
+/* ==========================================================================
+   LIGHT THEME — "Grimoire page": aged parchment, sepia ink, darkened accents.
+   Apply with <html data-theme="light"> or class .theme-light on any scope.
+   ========================================================================== */
+
+[data-theme="light"],
+.theme-light {
+  --bg-page:        #E9DEC6;
+  --bg-page-deep:   #DFD2B4;
+  --surface-base:   #F1E8D3;
+  --surface-card:   #F8F1E0;
+  --surface-raised: #FCF7EB;
+  --surface-sunken: #E2D5BB;
+  --surface-burgundy: #EAD9C6;
+  --surface-overlay: rgba(40, 24, 20, 0.42);
+
+  --border-subtle:  #D3C3A2;
+  --border-strong:  #BFAB84;
+  --border-gilt:    rgba(138, 106, 36, 0.45);
+  --border-focus:   var(--absinthe-700);
+
+  --text-strong:    #241813;
+  --text-body:      #3A2A22;
+  --text-muted:     #6C5A48;
+  --text-faint:     #977F63;
+  --text-on-accent: #14100A;
+  --text-on-burgundy: #F8F1E0;
+  --text-link:      #63701A;
+  --text-link-hover:#455010;
+  --text-accent:    #5E7A1E;
+
+  --accent:         #6E8B2E;   /* darkened absinthe for contrast on cream */
+  --accent-hover:   #556F1F;
+  --accent-press:   #455010;
+  --accent-soft:    rgba(110, 139, 46, 0.16);
+  --brand-burgundy: var(--oxblood-700);
+  --brand-gold:     var(--gilt-700);
+  --brand-violet:   #5A3A73;
+
+  --success:        #63701A;
+  --success-fg:     #F8F1E0;
+  --danger:         #9A1F1B;
+  --danger-fg:      #F8F1E0;
+  --warning:        #8A6A24;
+  --warning-fg:     #F8F1E0;
+  --info:           #2C6B66;
+  --info-fg:        #F8F1E0;
+
+  --glow-absinthe:  rgba(110, 139, 46, 0.28);
+  --glow-gold:      rgba(138, 106, 36, 0.30);
+}

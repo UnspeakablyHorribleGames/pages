@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Typography tokens — Unspeakably Horrible Games
+   "The Unspeakable Athenæum": literary, fin-de-siècle, a little cursed.
+   ========================================================================== */
+
+:root {
+  /* --- Font families ------------------------------------------------------ */
+  /* Display: gothic-fantasy display with sharp, skeletal serifs. Titles, hero lines, section heads. Single weight (400). */
+  --font-display: "Metamorphous", Georgia, serif;
+  /* Grimoire: old letterpress serif. Pull-quotes, incantations, atmosphere. */
+  --font-grimoire: "IM Fell English", "Cormorant Garamond", Georgia, serif;
+  /* Body: bookish serif engineered for screens. Running text, cards, paragraphs. */
+  --font-body: "Spectral", Georgia, "Times New Roman", serif;
+  /* Functional: clean grotesque. Buttons, inputs, labels, nav, tabular UI. */
+  --font-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  /* Mono: labels, code, stat readouts, "system" voice. */
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  /* Cursed: old-letterpress small caps (1600s Fell type). Logo lockups & the single word "Unspeakable" only. Same family as --font-grimoire. */
+  --font-cursed: "IM Fell English SC", "IM Fell English", serif;
+
+  /* --- Type scale (fluid-ish, rem based on 16px root) --------------------- */
+  --text-2xs: 0.6875rem;  /* 11px — micro labels, footnotes */
+  --text-xs:  0.75rem;    /* 12px — captions, meta */
+  --text-sm:  0.875rem;   /* 14px — secondary body, UI */
+  --text-base:1rem;       /* 16px — body default */
+  --text-md:  1.125rem;   /* 18px — lead body */
+  --text-lg:  1.375rem;   /* 22px — small headings */
+  --text-xl:  1.75rem;    /* 28px — card titles */
+  --text-2xl: 2.25rem;    /* 36px — section titles */
+  --text-3xl: 3rem;       /* 48px — page titles */
+  --text-4xl: 4.25rem;    /* 68px — hero */
+  --text-5xl: 6rem;       /* 96px — display / cover */
+
+  /* --- Weights ------------------------------------------------------------ */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* --- Line heights ------------------------------------------------------- */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* --- Letter spacing ----------------------------------------------------- */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.12em;   /* small-caps eyebrow labels */
+  --tracking-widest: 0.24em;  /* mono kicker / "chapter" tags */
+
+  /* --- Semantic roles ----------------------------------------------------- */
+  --type-hero-family: var(--font-display);
+  --type-hero-weight: var(--weight-regular);
+  --type-hero-leading: var(--leading-tight);
+  --type-hero-tracking: var(--tracking-tight);
+
+  --type-title-family: var(--font-display);
+  --type-title-weight: var(--weight-regular);
+
+  --type-eyebrow-family: var(--font-mono);
+  --type-eyebrow-tracking: var(--tracking-widest);
+  --type-eyebrow-size: var(--text-xs);
+
+  --type-body-family: var(--font-body);
+  --type-body-weight: var(--weight-regular);
+  --type-body-leading: var(--leading-relaxed);
+  --type-body-size: var(--text-md);
+
+  --type-ui-family: var(--font-ui);
+  --type-ui-weight: var(--weight-medium);
+  --type-ui-tracking: var(--tracking-wide);
+
+  --type-quote-family: var(--font-grimoire);
+}
