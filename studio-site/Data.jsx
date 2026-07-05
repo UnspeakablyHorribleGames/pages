@@ -21,18 +21,19 @@ const GAMES = [
   },
 ];
 
+// PRIMARY: founder + the people carrying outsized load right now.
+// Names are real handles; roles/bios are editable placeholders (no permanent copy yet).
 const TEAM = [
-  { name: "Wren Ashcombe", role: "Founder · Everything, apparently", tone: "absinthe", bio: "Started this in a basement. Still in the basement." },
-  { name: "Ophelia Marsh", role: "Art & Unspeakable Vibes", tone: "burgundy", bio: "Draws the cute ones and the cursed ones. Often the same one." },
-  { name: "Cassius Vane", role: "Code & Cursed Physics", tone: "violet", bio: "Makes the tentacles move. Regrets making the tentacles move." },
-  { name: "Juniper Okonkwo", role: "Sound & Dread", tone: "gilt", bio: "That noise you heard? On purpose. Probably." },
+  { name: "Zhinjio", role: "Founder", tone: "absinthe", bio: "Code monkey, AI wrangler, and resident basement denizen. Started this; can't stop.", lead: true },
+  { name: "Zasifras", role: "Co-founder", tone: "violet", bio: "Art and code — and the one who keeps the rest of us honest." },
+  { name: "Coyote", role: "Co-founder", tone: "gilt", bio: "Design, code, and a licensed chaos agent. Results may vary." },
 ];
 
 const CONTRIBUTORS = [
-  "Additional writing — M. Corvid",
-  "Localization — The Babel Collective",
-  "Playtesting — everyone's very patient friends",
-  "Community — the Discord regulars",
+  "Kaelten — design & review",
+  "Basil — art & design ideas",
+  "Rimwolf — sound design",
+  "Momerathus — design & the science-honesty desk",
 ];
 
 Object.assign(window, { GAMES, TEAM, CONTRIBUTORS });
