@@ -6,14 +6,14 @@ function Footer({ setView }) {
     { h: "Lurk with us", items: ["Email us", "Discord · soon"] },
   ];
   return (
-    <footer style={{ borderTop: "1px solid var(--border-subtle)", background: "var(--surface-sunken)", marginTop: "var(--space-9)", position: "relative", overflow: "hidden" }}>
-      {/* mascot easter egg, peeking from the bottom-right */}
-      <img src={window.__MASCOT_SRC || "../assets/mascot-placeholder.png"} alt="" aria-hidden="true" style={{
-        position: "absolute", right: 36, bottom: -14, width: 96, opacity: 0.9,
+    <footer style={{ borderTop: "1px solid var(--border-subtle)", background: "var(--surface-sunken)", marginTop: "var(--space-9)", position: "relative", overflow: "visible" }}>
+      {/* mascot easter egg, fully over the footer */}
+      <img src={window.__MASCOT_SRC || "../assets/mascot-placeholder.png"} alt="Eldy, the studio mascot" title="This is Eldy. He means well." style={{
+        position: "absolute", right: 36, bottom: 0, width: 192, opacity: 0.94, zIndex: 5,
         filter: "drop-shadow(0 6px 14px rgba(0,0,0,.5))",
         animation: "uhg-drift 7s var(--ease-standard) infinite",
       }} />
-      <div style={{ maxWidth: "var(--container-xl)", margin: "0 auto", padding: "var(--space-8) var(--space-6) var(--space-6)", display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: "var(--space-6)" }}>
+      <div style={{ position: "relative", zIndex: 1, maxWidth: "var(--container-xl)", margin: "0 auto", padding: "var(--space-8) var(--space-6) var(--space-6)", display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: "var(--space-6)" }}>
         <div>
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 22, color: "var(--text-strong)" }}>Unspeakably Horrible Games</div>
           <p style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-sm)", color: "var(--text-muted)", lineHeight: 1.6, marginTop: 8, maxWidth: "32ch" }}>
@@ -31,8 +31,14 @@ function Footer({ setView }) {
           </div>
         ))}
       </div>
-      <div style={{ borderTop: "1px solid var(--border-subtle)", padding: "var(--space-4) var(--space-6)", fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-faint)", maxWidth: "var(--container-xl)", margin: "0 auto" }}>
-        © {new Date().getFullYear()} Unspeakably Horrible Games · No eldritch entities were harmed. A few were mildly inconvenienced.
+      <div style={{ position: "relative", overflow: "hidden", borderTop: "1px solid var(--border-gilt)", background: "var(--surface-sunken)" }}>
+        <div className="uhg-tx uhg-leather-base"></div>
+        <div className="uhg-tx uhg-l-broad"></div>
+        <div className="uhg-tx uhg-l-pore"></div>
+        <div className="uhg-tx uhg-grit uhg-nfine"></div>
+        <div style={{ position: "relative", zIndex: 1, padding: "var(--space-4) var(--space-6)", fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-body)", maxWidth: "var(--container-xl)", margin: "0 auto" }}>
+          © {new Date().getFullYear()} Unspeakably Horrible Games · No eldritch entities were harmed. A few were mildly inconvenienced.
+        </div>
       </div>
     </footer>
   );

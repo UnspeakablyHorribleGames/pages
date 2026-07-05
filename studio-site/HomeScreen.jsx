@@ -10,7 +10,7 @@ function HomeScreen({ setView }) {
       {/* HERO */}
       <div style={{ position: "relative", overflow: "hidden", borderBottom: "1px solid var(--border-subtle)" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(80% 120% at 50% -10%, rgba(159,190,59,0.10), transparent 55%)" }} />
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "var(--texture-grain)", opacity: 0.2, mixBlendMode: "overlay" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "var(--texture-grain)", opacity: 0.07, mixBlendMode: "soft-light" }} />
         <div style={{ position: "relative", maxWidth: "var(--container-lg)", margin: "0 auto", padding: "var(--space-10) var(--space-6) var(--space-9)", textAlign: "center" }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-xs)", letterSpacing: "var(--tracking-widest)", textTransform: "uppercase", color: "var(--brand-gold)", marginBottom: "var(--space-5)" }}>An independent game studio · est. in a dim room</div>
           <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 400, fontSize: "clamp(48px, 8vw, 92px)", lineHeight: 0.98, letterSpacing: "-0.02em", color: "var(--text-strong)", margin: 0 }}>
@@ -20,7 +20,7 @@ function HomeScreen({ setView }) {
             We are a few friends who make cozy, cursed little games. Cosmic terror, gentle jokes, and a mascot who means well. It's probably fine.
           </p>
           <div style={{ display: "flex", gap: "var(--space-3)", justifyContent: "center", marginTop: "var(--space-7)" }}>
-            <Button variant="loud" size="lg" onClick={() => setView("games")}>Browse the games</Button>
+            <Button variant="primary" size="lg" onClick={() => setView("games")}>Browse the games</Button>
             <Button variant="gilt" size="lg" onClick={() => setView("about")}>Our mission</Button>
           </div>
         </div>

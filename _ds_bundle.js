@@ -47,27 +47,26 @@ function useButtonStyles() {
       .uhg-btn--lg { height: var(--control-h-lg); padding: 0 var(--space-6); font-size: var(--text-base); }
       .uhg-btn--block { display: flex; width: 100%; }
 
-      /* primary — dark chip, absinthe hairline + text, blooms on hover (restrained) */
-      .uhg-btn--primary { background: var(--surface-card); color: var(--absinthe-400); border-color: rgba(159,190,59,0.5); }
-      .uhg-btn--primary:hover { border-color: var(--accent); color: var(--absinthe-300); box-shadow: var(--glow-sm-absinthe); }
-      .uhg-btn--primary:active { background: var(--surface-raised); }
-      /* light theme: cream surface would kill contrast — use a green-tinted chip with darkened ink */
-      [data-theme="light"] .uhg-btn--primary, .theme-light .uhg-btn--primary {
+      /* primary — deep burgundy fill (workhorse CTA) */
+      .uhg-btn--primary { background: var(--btn-primary); color: var(--parchment); border-color: transparent; }
+      .uhg-btn--primary:hover { background: var(--btn-primary-hover); }
+      .uhg-btn--primary:active { background: var(--btn-primary-press); }
+
+      /* loud — STAGED (paused from use): cosmic-violet from the mascot wing, glowing edge */
+      .uhg-btn--loud { background: var(--btn-loud); color: var(--parchment); border-color: var(--btn-loud-edge); box-shadow: 0 0 16px -4px rgba(151,82,148,0.55); }
+      .uhg-btn--loud:hover { background: var(--btn-loud); box-shadow: 0 0 24px -2px rgba(151,82,148,0.8); }
+      .uhg-btn--loud:active { background: var(--btn-loud-press); }
+
+      /* secondary — dark chip, absinthe hairline + text, blooms on hover (restrained accent) */
+      .uhg-btn--secondary { background: var(--surface-card); color: var(--absinthe-400); border-color: rgba(159,190,59,0.5); }
+      .uhg-btn--secondary:hover { border-color: var(--accent); color: var(--absinthe-300); box-shadow: var(--glow-sm-absinthe); }
+      .uhg-btn--secondary:active { background: var(--surface-raised); }
+      [data-theme="light"] .uhg-btn--secondary, .theme-light .uhg-btn--secondary {
         background: var(--accent-soft); color: var(--accent); border-color: rgba(110,139,46,0.55);
       }
-      [data-theme="light"] .uhg-btn--primary:hover, .theme-light .uhg-btn--primary:hover {
+      [data-theme="light"] .uhg-btn--secondary:hover, .theme-light .uhg-btn--secondary:hover {
         background: rgba(110,139,46,0.22); color: var(--accent-press); border-color: var(--accent); box-shadow: none;
       }
-
-      /* loud — solid bright absinthe. RARE: one hero CTA per page, max. */
-      .uhg-btn--loud { background: var(--accent); color: var(--text-on-accent); border-color: transparent; }
-      .uhg-btn--loud:hover { background: var(--accent-hover); box-shadow: var(--glow-sm-absinthe); }
-      .uhg-btn--loud:active { background: var(--accent-press); }
-
-      /* secondary — burgundy */
-      .uhg-btn--secondary { background: var(--brand-burgundy); color: var(--text-on-burgundy); border-color: transparent; }
-      .uhg-btn--secondary:hover { background: var(--oxblood-500); }
-      .uhg-btn--secondary:active { background: var(--oxblood-700); }
 
       /* gilt — gilded outline, transparent fill */
       .uhg-btn--gilt { background: transparent; color: var(--brand-gold); border-color: var(--brand-gold); }
@@ -76,6 +75,11 @@ function useButtonStyles() {
       /* ghost — quiet */
       .uhg-btn--ghost { background: transparent; color: var(--text-body); border-color: transparent; }
       .uhg-btn--ghost:hover { background: var(--surface-raised); color: var(--text-strong); }
+
+      /* verdigris — oxidized copper outline */
+      .uhg-btn--verd { background: linear-gradient(150deg,#1d2b26,#131c18); color:#9fd8c4; border-color: rgba(90,150,130,.55); }
+      .uhg-btn--verd:hover { border-color:#7fc4ac; color:#c6efe0; box-shadow: 0 0 16px -6px rgba(90,150,130,.6); }
+      .uhg-btn--verd:active { background: linear-gradient(150deg,#17231f,#0f1613); }
 
       /* danger */
       .uhg-btn--danger { background: var(--danger); color: var(--danger-fg); border-color: transparent; }

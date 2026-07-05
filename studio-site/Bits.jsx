@@ -1,25 +1,47 @@
 /* Shared placeholder art + small helpers for the studio-site UI kit.
    These are cosmetic stand-ins — real key art / photos drop in later. */
 
+// Tracks the active theme (dark/light) and re-renders on toggle.
+function useTheme() {
+  const read = () => document.documentElement.getAttribute("data-theme") || "dark";
+  const [theme, setTheme] = React.useState(read);
+  React.useEffect(() => {
+    const obs = new MutationObserver(() => setTheme(read()));
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "class"] });
+    return () => obs.disconnect();
+  }, []);
+  return theme;
+}
+
 // Placeholder cover art: a moody gradient tile with genre + fleuron. No fake photos.
 function CoverArt({ seed = 0, label, ratio = "3 / 4" }) {
-  const themes = [
+  const theme = useTheme();
+  const dark = [
     { a: "#26310F", b: "#0A0608", ink: "var(--absinthe-400)" },
     { a: "#2A0C13", b: "#0A0608", ink: "var(--oxblood-400)" },
     { a: "#3D2A57", b: "#0A0608", ink: "var(--violet-400)" },
     { a: "#12241F", b: "#0A0608", ink: "var(--teal-400)" },
   ];
+  // light: aged-parchment tints of the same hues, deeper ink for contrast
+  const light = [
+    { a: "#c3cda6", b: "#e8e0cc", ink: "var(--absinthe-700)" },
+    { a: "#d8b3ac", b: "#ece2d2", ink: "var(--oxblood-600)" },
+    { a: "#c3b0d6", b: "#e6ddd0", ink: "var(--violet-700)" },
+    { a: "#a9c6ba", b: "#e4ddce", ink: "var(--teal-700)" },
+  ];
+  const themes = theme === "light" ? light : dark;
   const t = themes[seed % themes.length];
+  const isLight = theme === "light";
   return (
     <div style={{
       aspectRatio: ratio, width: "100%", borderRadius: "inherit",
       background: `radial-gradient(120% 90% at 30% 20%, ${t.a}, ${t.b} 78%)`,
       position: "relative", overflow: "hidden", display: "grid", placeItems: "center",
     }}>
-      <div style={{ position: "absolute", inset: 0, backgroundImage: "var(--texture-grain)", opacity: 0.28, mixBlendMode: "overlay" }} />
-      <div style={{ position: "absolute", inset: 0, background: "var(--vignette)" }} />
-      <div style={{ fontFamily: "var(--font-display)", fontSize: 40, color: t.ink, opacity: 0.85, textShadow: "0 2px 20px rgba(0,0,0,.6)" }}>❦</div>
-      {label && <div style={{ position: "absolute", bottom: 12, left: 14, fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--bone-500)" }}>{label}</div>}
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "var(--texture-grain)", opacity: isLight ? 0.06 : 0.09, mixBlendMode: "soft-light" }} />
+      <div style={{ position: "absolute", inset: 0, background: isLight ? "radial-gradient(120% 90% at 50% 120%, rgba(90,60,40,.14), transparent 70%)" : "var(--vignette)" }} />
+      <div style={{ fontFamily: "var(--font-display)", fontSize: 40, color: t.ink, opacity: isLight ? 0.6 : 0.85, textShadow: isLight ? "none" : "0 2px 20px rgba(0,0,0,.6)" }}>❦</div>
+      {label && <div style={{ position: "absolute", bottom: 12, left: 14, fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".14em", textTransform: "uppercase", color: isLight ? "var(--text-muted)" : "var(--bone-500)" }}>{label}</div>}
     </div>
   );
 }

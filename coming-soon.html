@@ -23,7 +23,7 @@
   }
   ::selection { background: var(--accent-soft); }
   .atmos { position: fixed; inset: 0; pointer-events: none; }
-  .grain { position: fixed; inset: 0; pointer-events: none; background-image: var(--texture-grain); opacity: 0.18; mix-blend-mode: overlay; }
+  .grain { position: fixed; inset: 0; pointer-events: none; background-image: var(--texture-grain); opacity: 0.06; mix-blend-mode: overlay; }
   .glow { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(70% 90% at 50% -10%, rgba(159,190,59,0.12), transparent 55%); }
   .vig { position: fixed; inset: 0; pointer-events: none; background: var(--vignette); }
   main {
@@ -40,7 +40,7 @@
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: .32em;
+    letter-spacing: .22em;
     text-transform: uppercase;
     color: var(--brand-gold);
     margin-bottom: 28px;
@@ -58,7 +58,7 @@
   .games {
     font-family: var(--font-mono);
     font-size: clamp(12px, 2vw, 15px);
-    letter-spacing: .5em;
+    letter-spacing: .34em;
     text-transform: uppercase;
     color: var(--brand-gold);
     margin: 18px 0 0;
@@ -99,14 +99,15 @@
     background: var(--surface-card);
     transition: border-color var(--dur-fast, .15s) ease, color var(--dur-fast, .15s) ease, box-shadow var(--dur-fast, .15s) ease;
   }
-  .contact:hover { border-color: var(--accent); color: var(--text-accent); box-shadow: var(--glow-sm-absinthe); }
+  .contact { border-color: var(--border-gilt); box-shadow: 0 0 0 1px rgba(200,162,76,0.12), 0 0 18px -6px var(--glow-absinthe); }
+  .contact:hover { border-color: var(--accent); color: var(--text-accent); box-shadow: 0 0 0 1px var(--accent-soft), 0 0 26px -4px var(--glow-absinthe); }
   .mascot {
     position: fixed;
     right: clamp(12px, 4vw, 60px);
     bottom: -12px;
     width: clamp(144px, 24vw, 232px);
     opacity: 0.85;
-    z-index: 1;
+    z-index: 5;
     filter: drop-shadow(0 6px 16px rgba(0,0,0,.55));
     animation: uhg-drift 7s ease-in-out infinite;
   }
@@ -117,11 +118,47 @@
     padding: 22px 24px 26px;
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--text-faint);
+    color: var(--text-muted);
     border-top: 1px solid var(--border-subtle);
     background: color-mix(in srgb, var(--surface-sunken) 60%, transparent);
   }
   @media (prefers-reduced-motion: reduce) { .mascot { animation: none; } }
+  .mascot { cursor: pointer; }
+  .eldy-bubble {
+    position: fixed;
+    right: clamp(12px, 4vw, 60px);
+    bottom: clamp(105px, 18vw, 170px);
+    max-width: 250px;
+    background: var(--surface-card);
+    color: var(--text-body);
+    border: 1px solid var(--border-gilt);
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-family: var(--font-grimoire, Georgia, serif);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.45;
+    box-shadow: 0 12px 34px rgba(0,0,0,.55);
+    opacity: 0;
+    transform: translateY(6px) scale(.98);
+    transform-origin: bottom right;
+    transition: opacity .25s ease, transform .25s ease;
+    pointer-events: none;
+    z-index: 6;
+  }
+  .eldy-bubble.show { opacity: 1; transform: translateY(0) scale(1); }
+  .eldy-bubble::after {
+    content: "";
+    position: absolute;
+    right: 30px;
+    bottom: -7px;
+    width: 12px;
+    height: 12px;
+    background: var(--surface-card);
+    border-right: 1px solid var(--border-gilt);
+    border-bottom: 1px solid var(--border-gilt);
+    transform: rotate(45deg);
+  }
 </style>
 </head>
 <body>
@@ -152,12 +189,39 @@
   <a class="contact" href="mailto:unspeakablyhorrible@gmail.com">Say something unspeakable&nbsp;→</a>
 </main>
 
-<img class="mascot" src="assets/mascot-placeholder.png" alt="" aria-hidden="true" />
+<div class="eldy-bubble" id="eldyBubble" role="status" aria-live="polite"></div>
+<img class="mascot" src="assets/mascot-placeholder.png" alt="Eldy, the studio mascot" title="This is Eldy. He means well." />
 
 <footer>
   © <span id="yr"></span> Unspeakably Horrible Games · No eldritch entities were harmed. A few were mildly inconvenienced.
 </footer>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // Eldy easter egg — click him and he says something.
+  (function () {
+    var lines = [
+      "You found me. Please don't tell the others.",
+      "A game is coming. I have seen it. It has too many teeth.",
+      "I'm Eldy. I do the emotional labor around here.",
+      "Wishlist us, or don't. The void is patient.",
+      "I mean well. Mostly.",
+      "One day you'll be able to ask me things. I'm practicing."
+    ];
+    var eldy = document.querySelector('.mascot');
+    var bubble = document.getElementById('eldyBubble');
+    var last = -1, timer;
+    if (eldy && bubble) {
+      eldy.addEventListener('click', function () {
+        var i; do { i = Math.floor(Math.random() * lines.length); } while (i === last && lines.length > 1);
+        last = i;
+        bubble.textContent = lines[i];
+        bubble.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(function () { bubble.classList.remove('show'); }, 4600);
+      });
+    }
+  })();
+</script>
 </body>
 </html>

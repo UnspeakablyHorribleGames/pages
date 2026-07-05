@@ -96,6 +96,14 @@
   --brand-gold:     var(--gilt-500);
   --brand-violet:   var(--violet-500);
 
+  /* Button roles */
+  --btn-primary:       #751F30;   /* deep oxblood — primary CTA fill */
+  --btn-primary-hover: #8A2439;
+  --btn-primary-press: #611826;
+  --btn-loud:          #48195B;   /* STAGED (paused): mascot wing shadow */
+  --btn-loud-edge:     #975294;   /* lit wing — glowing edge */
+  --btn-loud-press:    #3A1449;
+
   /* Semantic status */
   --success:        var(--absinthe-500);
   --success-fg:     var(--void);

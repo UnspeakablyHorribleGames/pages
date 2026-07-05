@@ -49,7 +49,7 @@
   --tracking-normal: 0;
   --tracking-wide: 0.04em;
   --tracking-wider: 0.12em;   /* small-caps eyebrow labels */
-  --tracking-widest: 0.24em;  /* mono kicker / "chapter" tags */
+  --tracking-widest: 0.20em;  /* mono kicker / "chapter" tags */
 
   /* --- Semantic roles ----------------------------------------------------- */
   --type-hero-family: var(--font-display);

@@ -11,6 +11,19 @@ function GamesScreen() {
   ];
   const games = window.GAMES.filter((g) => filter === "all" || g.status === filter);
 
+  const TEX = {
+    sky: ["uhg-sky-base", "uhg-s-cloud", "uhg-s-aur", "uhg-s-aur2"],
+    verd: ["uhg-verd-base", "uhg-v-patina", "uhg-v-ox"],
+    leather: ["uhg-leather-base", "uhg-l-broad", "uhg-l-pore"],
+  };
+  const texLayers = (t) => {
+    const arr = TEX[t] || [];
+    return [
+      ...arr.map((c, i) => <div key={i} className={"uhg-tx " + c} />),
+      <div key="grit" className="uhg-tx uhg-grit uhg-nfine" />,
+    ];
+  };
+
   return (
     <Section eyebrow="The offerings" title="Games we have inflicted" intro="One game so far, and no hurry to rush the next. Hover for the pitch; wishlist at your own risk.">
       <div style={{ margin: "var(--space-6) 0 var(--space-7)" }}>
@@ -18,19 +31,22 @@ function GamesScreen() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "var(--space-6)" }}>
         {games.map((g) => (
-          <Card key={g.title} interactive style={{ overflow: "hidden" }}>
-            <CoverArt seed={g.seed} label="cover placeholder" />
-            <Card.Body style={{ gap: "var(--space-2)" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <Badge tone={g.statusTone} dot={g.statusTone === "absinthe"}>{g.status}</Badge>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-xs)", color: "var(--text-muted)" }}>{g.price}</span>
-              </div>
-              <Card.Title style={{ fontSize: "var(--text-xl)" }}>{g.title}</Card.Title>
-              <Card.Text style={{ fontSize: "var(--text-sm)" }}>{g.blurb}</Card.Text>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
-                {g.genres.slice(0, 2).map((x) => <Tag key={x}>{x}</Tag>)}
-              </div>
-            </Card.Body>
+          <Card key={g.title} interactive style={{ overflow: "hidden", position: "relative" }}>
+            {texLayers(g.texture)}
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <CoverArt seed={g.seed} label="cover placeholder" />
+              <Card.Body style={{ gap: "var(--space-2)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <Badge tone={g.statusTone} dot={g.statusTone === "absinthe"}>{g.status}</Badge>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-xs)", color: "var(--text-muted)" }}>{g.price}</span>
+                </div>
+                <Card.Title style={{ fontSize: "var(--text-xl)" }}>{g.title}</Card.Title>
+                <Card.Text style={{ fontSize: "var(--text-sm)" }}>{g.blurb}</Card.Text>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
+                  {g.genres.slice(0, 2).map((x) => <Tag key={x}>{x}</Tag>)}
+                </div>
+              </Card.Body>
+            </div>
           </Card>
         ))}
       </div>
