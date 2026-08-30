@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How our games get made — Unspeakably Horrible Games</title>
+<meta name="description" content="How Unspeakably Horrible Games are built: art and music by people, code written with AI assistance, and where the line sits." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="site.css" />
+<script>try { document.documentElement.dataset.theme = localStorage.getItem("uhg-theme") || "dark"; } catch (e) {}</script>
+<style>
+  .prose { font-family: var(--font-body); font-size: var(--text-md); color: var(--text-body); line-height: 1.8; max-width: 62ch; margin-top: var(--space-6); }
+  .prose p { margin: 0 0 var(--space-5); }
+  .prose p.lead { font-size: var(--text-lg); color: var(--text-muted); }
+  .prose h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--text-xl); color: var(--text-strong); margin: var(--space-8) 0 var(--space-3); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+  <div class="site-header__row">
+    <a class="wordmark" href="home.html"><span class="wordmark__name">Unspeakably <em>Horrible</em></span><span class="wordmark__tag">Games</span></a>
+    <nav class="site-nav">
+      <a href="home.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="about.html">About</a>
+      <a href="team.html">The Coven</a>
+      <a href="/devlog/">Devlog</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme"></button>
+      <a class="btn btn--primary" href="games.html">See Hungry Dark</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="max-width: var(--container-md);">
+    <h1 class="section-title">How our games get made</h1>
+    <div class="prose">
+      <p class="lead">Unspeakably Horrible Games is a few friends and a very large dream. Before you play our games — and definitely before you ever pay for one — we want you to know how they're built, because you deserve to decide with real information, and because we'd rather tell you ourselves than have you find out sideways.</p>
+
+      <h2>Art and music are made by people. Always.</h2>
+      <p>Every image and every note in our games comes from a human artist or musician — licensed, commissioned, or contributed, and credited by name. This isn't a wait-and-see position while the questions about how generative art models are trained get settled in courtrooms, though those questions are unresolved and we take them seriously. It's simpler than that: we want to pay artists, point at their names in our credits, and put their work in front of the world. That's one of the good parts of making games. We're keeping it.</p>
+
+      <h2>The code is written with AI assistance.</h2>
+      <p>Here is the arithmetic we won't pretend away: our games are decades-sized projects and we are a tiny team with day jobs. Without AI coding tools, these games would not exist — not "would take longer," would not exist. So we use them, the way we use engines and compilers and twenty years of other people's Stack Overflow answers. What the tools don't do: decide what the game is. Every system is designed and argued over by people, every number is tuned by a person against real playtesting, and a named human answers for every line that ships. If a game of ours is good, that's ours to claim. If it's broken, that's ours too.</p>
+
+      <h2>The words are in between.</h2>
+      <p>The lore and stories in our games are drafted in collaboration with AI tools and shaped, corrected, and chosen line-by-line by us. We call this out separately because we hold art and music to a stricter standard, and you deserve to know exactly where the line sits rather than a comfortable blur.</p>
+
+      <h2>Why say any of this?</h2>
+      <p>Most studios don't. But honesty is one of the rules we started this company with, and this seemed like a strange place to make an exception. If AI involvement is a dealbreaker for you, we understand — no hard feelings, and we'd rather you know now than feel tricked later. If what you actually care about is whether a game was made with care, that isn't something a tag can tell you in either direction. We'll leave the judgment where it belongs: with you, with the game in front of you — and we'll always try to make that easy.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img class="site-footer__mascot" id="mascot" src="assets/mascot-placeholder.png" alt="Eldy, the studio mascot" title="This is Eldy. He means well." />
+  <div class="site-footer__cols">
+    <div>
+      <div class="site-footer__brand-name">Unspeakably Horrible Games</div>
+      <p class="site-footer__brand-blurb">Small games about enormous horrors. Made by a few friends in a dim room. Probably fine.</p>
+    </div>
+    <div class="footcol"><div class="footcol__h">Games</div><ul><li><a href="games.html">Hungry Dark</a></li><li><a href="games.html">In the cauldron</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Studio</div><ul><li><a href="about.html">About</a></li><li><a href="team.html">The Coven</a></li><li><a href="/devlog/">Devlog</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Lurk with us</div><ul><li><a href="mailto:unspeakablyhorriblegames@gmail.com">Email us</a></li><li><a href="https://discord.gg/MKR3YYKRSZ" target="_blank" rel="noopener">Discord</a></li></ul></div>
+  </div>
+  <div class="site-footer__bar">
+    <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+    <div class="site-footer__bar-inner">&copy; <span id="yr"></span> Unspeakably Horrible Games &middot; No eldritch entities were harmed. A few were mildly inconvenienced.</div>
+  </div>
+</footer>
+
+<div class="eldy-bubble" id="eldyBubble" role="status" aria-live="polite"></div>
+<script src="site.js"></script>
+</body>
+</html>
