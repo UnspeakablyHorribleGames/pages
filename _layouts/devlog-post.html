@@ -1,0 +1,12 @@
+---
+layout: site
+---
+<article class="section" style="max-width: var(--container-md);">
+  <div class="eyebrow">Devlog{% if page.tags.size > 0 %} &middot; {{ page.tags | join: " &middot; " }}{% endif %}</div>
+  <h1 class="section-title">{{ page.title }}</h1>
+  <div class="devlog-meta">{{ page.date | date: "%B %-d, %Y" }}{% if page.author %} &middot; {{ page.author }}{% endif %}</div>
+  <div class="devlog-body">
+    {{ content }}
+  </div>
+  <p class="devlog-back"><a href="/devlog/">&larr; All posts</a></p>
+</article>

@@ -1,0 +1,32 @@
+---
+layout: site
+title: Devlog
+description: Development notes and release announcements from Unspeakably Horrible Games — no email list, just a feed.
+permalink: /devlog/
+---
+<section class="section">
+  <div class="eyebrow">The record</div>
+  <h1 class="section-title">Devlog</h1>
+  <p class="section-intro">What we're making, breaking, and occasionally shipping. There's no mailing list — we don't ask for your email. Subscribe to a feed, or lurk in the Discord.</p>
+
+  <div class="devlog-subscribe">
+    <a class="btn btn--primary" href="/releases.xml">Releases feed</a>
+    <a class="btn btn--gilt" href="/devlog.xml">Everything feed</a>
+    <span class="devlog-subscribe__note"><strong>Releases</strong> = just when a game ships. <strong>Everything</strong> = every post. Or <a href="https://discord.gg/MKR3YYKRSZ" target="_blank" rel="noopener">follow the Discord</a>.</span>
+  </div>
+
+  {% assign posts = site.posts %}
+  {% if posts.size > 0 %}
+  <ul class="devlog-list">
+    {% for post in posts %}
+    <li class="devlog-item">
+      <a class="devlog-item__title" href="{{ post.url }}">{{ post.title }}</a>
+      <div class="devlog-item__meta">{{ post.date | date: "%B %-d, %Y" }}{% if post.tags.size > 0 %} &middot; {{ post.tags | join: " &middot; " }}{% endif %}</div>
+      <div class="devlog-item__excerpt">{{ post.excerpt | strip_html | truncatewords: 34 }}</div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="section-intro" style="margin-top: var(--space-8);">No posts yet — the record opens soon.</p>
+  {% endif %}
+</section>

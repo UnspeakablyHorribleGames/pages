@@ -1,0 +1,26 @@
+# Jekyll config — SCOPED TO THE DEVLOG (per #devlog spec).
+# The site is otherwise hand-authored static HTML: existing pages carry no front
+# matter and pass through byte-identical. Jekyll only processes _posts, the
+# devlog layout, the devlog index, and the two feed templates.
+
+title: Unspeakably Horrible Games
+description: Devlog and release notes from a small studio making cozy, cursed games.
+url: "https://unspeakablyhorriblegames.com"
+baseurl: ""
+
+# Newest-first posts; permalinks under /devlog/.
+permalink: /devlog/:year/:month/:day/:title/
+
+# Keep underscore-prefixed assets published (Jekyll excludes them by default).
+# _ds_bundle.js is used by the retired React demo; include it so nothing drops.
+include:
+  - "_ds_bundle.js"
+
+# Nothing here needs plugins; GitHub Pages' safe mode is fine.
+plugins: []
+
+# Keep the devlog how-to guide out of the published site (it's a repo doc).
+# Everything else that was being served stays served (the static pages have no
+# front matter and pass through byte-identical).
+exclude:
+  - "README-DEVLOG.md"

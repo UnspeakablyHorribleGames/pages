@@ -1,0 +1,24 @@
+---
+layout: null
+permalink: /devlog.xml
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Unspeakably Horrible Games — Devlog</title>
+  <subtitle>Everything: development notes and releases.</subtitle>
+  <link href="{{ site.url }}/devlog.xml" rel="self"/>
+  <link href="{{ site.url }}/devlog/"/>
+  <id>{{ site.url }}/devlog.xml</id>
+  {% if site.posts.size > 0 %}<updated>{{ site.posts.first.date | date_to_xmlschema }}</updated>{% endif %}
+  {% for post in site.posts %}
+  <entry>
+    <title>{{ post.title | xml_escape }}</title>
+    <link href="{{ site.url }}{{ post.url }}"/>
+    <id>{{ site.url }}{{ post.url }}</id>
+    <published>{{ post.date | date_to_xmlschema }}</published>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    {% for tag in post.tags %}<category term="{{ tag | xml_escape }}"/>{% endfor %}
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>
