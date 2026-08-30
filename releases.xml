@@ -8,9 +8,8 @@ permalink: /releases.xml
   <link href="{{ site.url }}/releases.xml" rel="self"/>
   <link href="{{ site.url }}/devlog/"/>
   <id>{{ site.url }}/releases.xml</id>
-  {% assign releases = site.posts | where_exp: "p", "p.tags contains 'release' or p.tags contains 'major-release'" %}
-  {% if releases.size > 0 %}<updated>{{ releases.first.date | date_to_xmlschema }}</updated>{% endif %}
-  {% for post in releases %}
+  {% if site.posts.size > 0 %}<updated>{{ site.posts.first.date | date_to_xmlschema }}</updated>{% endif %}
+  {% for post in site.posts %}{% if post.tags contains 'release' or post.tags contains 'major-release' %}
   <entry>
     <title>{{ post.title | xml_escape }}</title>
     <link href="{{ site.url }}{{ post.url }}"/>
@@ -20,5 +19,5 @@ permalink: /releases.xml
     {% for tag in post.tags %}<category term="{{ tag | xml_escape }}"/>{% endfor %}
     <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
-  {% endfor %}
+  {% endif %}{% endfor %}
 </feed>
