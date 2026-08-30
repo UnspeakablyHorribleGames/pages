@@ -17,9 +17,17 @@ permalink: /devlog/
 
   {% assign posts = site.posts %}
   {% if posts.size > 0 %}
+  {% if site.tags.size > 0 %}
+  <div class="devlog-tags" aria-label="Filter posts by tag">
+    <button class="tag-chip" type="button" data-tag="all" aria-pressed="true">All</button>
+    {% for t in site.tags %}
+    <button class="tag-chip" type="button" data-tag="{{ t[0] }}" aria-pressed="false">{{ t[0] }} <span class="tag-chip__count">{{ t[1].size }}</span></button>
+    {% endfor %}
+  </div>
+  {% endif %}
   <ul class="devlog-list">
     {% for post in posts %}
-    <li class="devlog-item">
+    <li class="devlog-item" data-tags="{{ post.tags | join: ' ' }}">
       <a class="devlog-item__title" href="{{ post.url }}">{{ post.title }}</a>
       <div class="devlog-item__meta">{{ post.date | date: "%B %-d, %Y" }}{% if post.tags.size > 0 %} &middot; {{ post.tags | join: " &middot; " }}{% endif %}</div>
       <div class="devlog-item__excerpt">{{ post.excerpt | strip_html | truncatewords: 34 }}</div>

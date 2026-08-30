@@ -60,4 +60,19 @@
       });
     });
   }
+
+  /* ---- devlog tag filter (devlog index only) ---- */
+  var tagChips = Array.prototype.slice.call(document.querySelectorAll(".tag-chip"));
+  if (tagChips.length) {
+    tagChips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var tag = chip.getAttribute("data-tag");
+        tagChips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+        Array.prototype.slice.call(document.querySelectorAll(".devlog-item")).forEach(function (item) {
+          var itemTags = (item.getAttribute("data-tags") || "").split(" ");
+          item.style.display = (tag === "all" || itemTags.indexOf(tag) !== -1) ? "" : "none";
+        });
+      });
+    });
+  }
 })();
