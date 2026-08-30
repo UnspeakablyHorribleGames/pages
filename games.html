@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Games — Unspeakably Horrible Games</title>
+<meta name="description" content="The games we have inflicted. One so far — Hungry Dark — and no hurry to rush the next." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="site.css" />
+<script>try { document.documentElement.dataset.theme = localStorage.getItem("uhg-theme") || "dark"; } catch (e) {}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+  <div class="site-header__row">
+    <a class="wordmark" href="home.html"><span class="wordmark__name">Unspeakably <em>Horrible</em></span><span class="wordmark__tag">Games</span></a>
+    <nav class="site-nav">
+      <a href="home.html">Home</a>
+      <a href="games.html" aria-current="page">Games</a>
+      <a href="about.html">About</a>
+      <a href="team.html">The Coven</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme"></button>
+      <a class="btn btn--primary" href="games.html">See Hungry Dark</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="eyebrow">The offerings</div>
+    <h1 class="section-title">Games we have inflicted</h1>
+    <p class="section-intro">One game so far, and no hurry to rush the next. Read the pitch; wishlist at your own risk.</p>
+
+    <div style="margin: var(--space-6) 0 var(--space-7);">
+      <div class="tabs" role="tablist" aria-label="Filter games">
+        <button class="tab" type="button" role="tab" data-filter="all" aria-selected="true">All</button>
+        <button class="tab" type="button" role="tab" data-filter="In Development" aria-selected="false">In Development</button>
+        <button class="tab" type="button" role="tab" data-filter="In the Cauldron" aria-selected="false">Someday</button>
+      </div>
+    </div>
+
+    <div class="grid-auto">
+      <!-- Hungry Dark -->
+      <article class="card card--interactive" data-status="In Development" style="position: relative;">
+        <div class="uhg-tx uhg-sky-base"></div><div class="uhg-tx uhg-s-cloud"></div><div class="uhg-tx uhg-s-aur"></div><div class="uhg-tx uhg-s-aur2"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+        <div style="position: relative; z-index: 1;">
+          <div class="cover"><div class="cover__mark">&#10086;</div><div class="cover__label">cover placeholder</div></div>
+          <div class="card-body">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="badge badge--violet">In Development</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">Wishlist soon</span>
+            </div>
+            <h3 class="card-title" style="font-size: var(--text-xl);">Hungry Dark</h3>
+            <p class="card-text" style="font-size: var(--text-sm);">You're not the hero — you're the thing in the dark that eats them. Play a hungry ooze: consume the dungeon, sprout new organs, and learn what you probably shouldn't.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;"><span class="tag">Roguelike</span><span class="tag">Reverse Dungeon</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Untitled Second Thing -->
+      <article class="card card--interactive" data-status="In the Cauldron" style="position: relative;">
+        <div class="uhg-tx uhg-verd-base"></div><div class="uhg-tx uhg-v-patina"></div><div class="uhg-tx uhg-v-ox"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+        <div style="position: relative; z-index: 1;">
+          <div class="cover cover--violet"><div class="cover__mark">&#10086;</div><div class="cover__label">cover placeholder</div></div>
+          <div class="card-body">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="badge badge--absinthe"><span class="badge__dot"></span>In the Cauldron</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">Someday</span>
+            </div>
+            <h3 class="card-title" style="font-size: var(--text-xl);">Untitled Second Thing</h3>
+            <p class="card-text" style="font-size: var(--text-sm);">Something is bubbling. We're not ready to say what, and saying so early has burned us before. It will be small, and it will be a little wrong.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;"><span class="tag">Unannounced</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- A Glint in Someone's Eye -->
+      <article class="card card--interactive" data-status="In the Cauldron" style="position: relative;">
+        <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+        <div style="position: relative; z-index: 1;">
+          <div class="cover cover--verd"><div class="cover__mark">&#10086;</div><div class="cover__label">cover placeholder</div></div>
+          <div class="card-body">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="badge badge--burgundy">In the Cauldron</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">Someday</span>
+            </div>
+            <h3 class="card-title" style="font-size: var(--text-xl);">A Glint in Someone's Eye</h3>
+            <p class="card-text" style="font-size: var(--text-sm);">Barely a game yet — a mood, a mechanic, and an argument we keep having at the whiteboard. Filed here so we don't forget it exists.</p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;"><span class="tag">Unannounced</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="callout">
+      <h3>Want to be told when we ship something?</h3>
+      <p>No newsletter yet — just a human at an inbox. Say hello and we'll remember you when there's news.</p>
+      <div style="margin-top: var(--space-5); display: flex; justify-content: center;">
+        <a class="btn btn--primary btn--lg" href="mailto:unspeakablyhorriblegames@gmail.com">Email the studio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img class="site-footer__mascot" id="mascot" src="assets/mascot-placeholder.png" alt="Eldy, the studio mascot" title="This is Eldy. He means well." />
+  <div class="site-footer__cols">
+    <div>
+      <div class="site-footer__brand-name">Unspeakably Horrible Games</div>
+      <p class="site-footer__brand-blurb">Small games about enormous horrors. Made by a few friends in a dim room. Probably fine.</p>
+    </div>
+    <div class="footcol"><div class="footcol__h">Games</div><ul><li><a href="games.html">Hungry Dark</a></li><li><a href="games.html">In the cauldron</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Studio</div><ul><li><a href="about.html">About</a></li><li><a href="team.html">The Coven</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Lurk with us</div><ul><li><a href="mailto:unspeakablyhorriblegames@gmail.com">Email us</a></li><li><a href="https://discord.gg/MKR3YYKRSZ" target="_blank" rel="noopener">Discord</a></li></ul></div>
+  </div>
+  <div class="site-footer__bar">
+    <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+    <div class="site-footer__bar-inner">&copy; <span id="yr"></span> Unspeakably Horrible Games &middot; No eldritch entities were harmed. A few were mildly inconvenienced.</div>
+  </div>
+</footer>
+
+<div class="eldy-bubble" id="eldyBubble" role="status" aria-live="polite"></div>
+<script src="site.js"></script>
+</body>
+</html>

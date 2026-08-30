@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — Unspeakably Horrible Games</title>
+<meta name="description" content="A few friends in a dim room who love the genre and can't leave it alone. Horror served cozy." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="site.css" />
+<script>try { document.documentElement.dataset.theme = localStorage.getItem("uhg-theme") || "dark"; } catch (e) {}</script>
+<style>
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-8); margin-top: var(--space-6); align-items: start; }
+  .about-story { font-family: var(--font-body); font-size: var(--text-md); color: var(--text-body); line-height: 1.75; display: flex; flex-direction: column; gap: var(--space-4); }
+  .about-story .dropcap { float: left; font-family: var(--font-display); font-size: 62px; line-height: 0.8; color: var(--text-accent); padding-right: 12px; margin-top: 6px; }
+  .motto-card { padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-gilt); background: var(--surface-card); box-shadow: var(--ring-gilt); }
+  .motto-card q { font-family: var(--font-grimoire); font-style: italic; font-size: var(--text-lg); color: var(--text-strong); line-height: 1.5; quotes: none; }
+  .motto-card .attr { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-faint); margin-top: 12px; letter-spacing: .08em; }
+  .value-card { padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); background: var(--surface-card); }
+  .value-card .num { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--brand-gold); margin-bottom: 10px; }
+  .value-card h3 { font-family: var(--font-display); font-size: var(--text-lg); color: var(--text-strong); margin: 0 0 6px; }
+  .value-card p { font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; margin: 0; }
+  @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+  <div class="site-header__row">
+    <a class="wordmark" href="home.html"><span class="wordmark__name">Unspeakably <em>Horrible</em></span><span class="wordmark__tag">Games</span></a>
+    <nav class="site-nav">
+      <a href="home.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="team.html">The Coven</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme"></button>
+      <a class="btn btn--primary" href="games.html">See Hungry Dark</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="eyebrow">Who we are</div>
+    <h1 class="section-title">A few friends in a dim room.</h1>
+    <div class="about-grid">
+      <div class="about-story">
+        <p style="margin: 0;"><span class="dropcap">W</span>e started Unspeakably Horrible Games because we love the genre and we are not very good at leaving it alone. The name is a pun — a nod to Lovecraft, and an honest warning about the quality. We're humble. The games might not be great. But they're ours, and we made them with our whole cursed hearts.</p>
+        <p style="margin: 0;">We believe horror is best served cozy: a warm mug, a soft blanket, and something enormous breathing just off-screen. If you finish one of our games feeling a little unsettled and a little comforted, we did our job.</p>
+      </div>
+      <div class="motto-card">
+        <q>That is not dead which can eternal lie, and with strange aeons even our roadmap may ship.</q>
+        <div class="attr">— studio motto, misremembered</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="eyebrow">What we stand for</div>
+    <h2 class="section-title">Our four small commandments</h2>
+    <div class="grid-fit" style="margin-top: var(--space-6);">
+      <div class="value-card"><div class="num">01</div><h3>Small on purpose</h3><p>We make games we can finish. Scope is the real monster.</p></div>
+      <div class="value-card"><div class="num">02</div><h3>Cozy, then cursed</h3><p>Comfort first. The dread should sneak up on you like a cat.</p></div>
+      <div class="value-card"><div class="num">03</div><h3>Humble to a fault</h3><p>We'll tell you what's broken before you find it. Usually.</p></div>
+      <div class="value-card"><div class="num">04</div><h3>Kind to players</h3><p>Fair prices, no dark patterns. The only darkness is thematic.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img class="site-footer__mascot" id="mascot" src="assets/mascot-placeholder.png" alt="Eldy, the studio mascot" title="This is Eldy. He means well." />
+  <div class="site-footer__cols">
+    <div>
+      <div class="site-footer__brand-name">Unspeakably Horrible Games</div>
+      <p class="site-footer__brand-blurb">Small games about enormous horrors. Made by a few friends in a dim room. Probably fine.</p>
+    </div>
+    <div class="footcol"><div class="footcol__h">Games</div><ul><li><a href="games.html">Hungry Dark</a></li><li><a href="games.html">In the cauldron</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Studio</div><ul><li><a href="about.html">About</a></li><li><a href="team.html">The Coven</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Lurk with us</div><ul><li><a href="mailto:unspeakablyhorriblegames@gmail.com">Email us</a></li><li><a href="https://discord.gg/MKR3YYKRSZ" target="_blank" rel="noopener">Discord</a></li></ul></div>
+  </div>
+  <div class="site-footer__bar">
+    <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+    <div class="site-footer__bar-inner">&copy; <span id="yr"></span> Unspeakably Horrible Games &middot; No eldritch entities were harmed. A few were mildly inconvenienced.</div>
+  </div>
+</footer>
+
+<div class="eldy-bubble" id="eldyBubble" role="status" aria-live="polite"></div>
+<script src="site.js"></script>
+</body>
+</html>
