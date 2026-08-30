@@ -81,6 +81,8 @@ main { flex: 1; }
 .site-footer__mascot { position: absolute; right: 36px; bottom: 0; width: 192px; opacity: .94; z-index: 5; filter: drop-shadow(0 6px 14px rgba(0,0,0,.5)); animation: uhg-drift 7s var(--ease-standard) infinite; cursor: pointer; }
 .site-footer__bar { position: relative; overflow: hidden; border-top: 1px solid var(--border-gilt); background: var(--surface-sunken); }
 .site-footer__bar-inner { position: relative; z-index: 1; padding: var(--space-4) var(--space-6); font-family: var(--font-mono); font-size: 11px; color: var(--text-body); max-width: var(--container-xl); margin: 0 auto; }
+.site-footer__bar-inner a { color: var(--text-body); text-decoration: none; }
+.site-footer__bar-inner a:hover { color: var(--text-accent); }
 
 /* ---- section ------------------------------------------------------------- */
 .section { max-width: var(--container-lg); margin: 0 auto; padding: var(--space-9) var(--space-6); }
