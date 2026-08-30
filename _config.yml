@@ -16,9 +16,6 @@ permalink: /devlog/:year/:month/:day/:title/
 include:
   - "_ds_bundle.js"
 
-# Nothing here needs plugins; GitHub Pages' safe mode is fine.
-plugins: []
-
 # Keep the devlog how-to guide out of the published site (it's a repo doc).
 # Everything else that was being served stays served (the static pages have no
 # front matter and pass through byte-identical).
