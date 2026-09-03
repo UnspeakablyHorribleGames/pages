@@ -165,7 +165,7 @@
       if (!used.length) { tree.innerHTML = '<p class="empty">You have no cloud saves stored.</p>'; return; }
       tree.innerHTML = used.map(function (g) {
         var vaults = (g.slots || []).filter(function (s) { return s.count; }).map(function (s) {
-          var label = s.name || s.slot;
+          var label = s.name || ("vault" + s.slot.replace(/^slot/, "")); // unnamed → "vaultN" placeholder, never the raw slot id
           return '<div class="vault" data-game="' + esc(g.game) + '" data-slot="' + esc(s.slot) + '" data-name="' + esc(label) + '">' +
             '<div class="vault__head"><span class="vault__name">' + esc(label) + (s.active ? ' <span class="vault__pill">active</span>' : '') + '</span>' +
             '<div class="vault__acts"><button class="btn btn--danger btn--sm" data-act="delvault">Delete this vault</button></div></div>' +
