@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your cloud saves — Unspeakably Horrible Games</title>
+<meta name="description" content="Sign in to see, download, or delete the game saves Unspeakably Horrible Games holds for you." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="site.css" />
+<script>try { document.documentElement.dataset.theme = localStorage.getItem("uhg-theme") || "dark"; } catch (e) {}</script>
+<style>
+  .acct { max-width: 66ch; margin-top: var(--space-6); }
+  .acct .lead { font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7; }
+  .acct .who { color: var(--text-muted); margin: var(--space-4) 0 var(--space-6); }
+  .acct .who strong { color: var(--text-strong); }
+  .signin-row { display: flex; gap: var(--space-3); flex-wrap: wrap; margin: var(--space-5) 0; }
+  .game-block { margin: var(--space-6) 0; }
+  .game-block > h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--text-xl); color: var(--text-strong); margin: 0 0 var(--space-3); }
+  .vault { border: 1px solid var(--border-subtle, rgba(140,140,140,0.22)); border-radius: 8px; padding: var(--space-4); margin: 0 0 var(--space-4); }
+  .vault__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2); }
+  .vault__name { color: var(--text-strong); font-weight: 600; }
+  .vault__pill { font-size: var(--text-xs, 11px); text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); }
+  .copy { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; padding: var(--space-2) 0; border-top: 1px solid var(--border-subtle, rgba(140,140,140,0.16)); font-size: var(--text-sm); }
+  .copy__l { min-width: 0; }
+  .copy__time { color: var(--text-strong); }
+  .copy__meta { color: var(--text-muted); }
+  .copy__acts, .vault__acts, .zone__acts { display: flex; gap: var(--space-2); align-items: center; }
+  .danger-zone { margin-top: var(--space-8); padding: var(--space-5); border: 1px solid rgba(180,60,70,0.4); border-radius: 8px; }
+  .danger-zone h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--text-lg); color: var(--text-strong); margin: 0 0 var(--space-2); }
+  .btn--danger { border-color: rgba(180,60,70,0.7); color: #d97a86; background: transparent; }
+  .btn--danger:hover { border-color: #d97a86; }
+  .btn--sm { font-size: var(--text-sm); padding: 4px 10px; }
+  .muted { color: var(--text-muted); font-size: var(--text-sm); }
+  .empty { color: var(--text-muted); margin: var(--space-5) 0; }
+  #toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--surface-2, #1c1c1c); color: var(--text-strong); border: 1px solid var(--border-subtle, rgba(140,140,140,0.3)); border-radius: 8px; padding: 10px 16px; font-size: var(--text-sm); opacity: 0; transition: opacity .2s; pointer-events: none; }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+  <div class="site-header__row">
+    <a class="wordmark" href="home.html"><span class="wordmark__name">Unspeakably <em>Horrible</em></span><span class="wordmark__tag">Games</span></a>
+    <nav class="site-nav">
+      <a href="home.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="about.html">About</a>
+      <a href="team.html">The Coven</a>
+      <a href="/devlog/">Devlog</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme"></button>
+      <a class="btn btn--primary" href="games.html">See Hungry Dark</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="max-width: var(--container-md);">
+    <h1 class="section-title">Your cloud saves</h1>
+    <div class="acct" id="acct"><p class="muted">Loading…</p></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img class="site-footer__mascot" id="mascot" src="assets/mascot-placeholder.png" alt="Eldy, the studio mascot" title="This is Eldy. He means well." />
+  <div class="site-footer__cols">
+    <div>
+      <div class="site-footer__brand-name">Unspeakably Horrible Games</div>
+      <p class="site-footer__brand-blurb">Small games about enormous horrors. Made by a few friends in a dim room. Probably fine.</p>
+    </div>
+    <div class="footcol"><div class="footcol__h">Games</div><ul><li><a href="games.html">Hungry Dark</a></li><li><a href="games.html">In the cauldron</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Studio</div><ul><li><a href="about.html">About</a></li><li><a href="team.html">The Coven</a></li><li><a href="/devlog/">Devlog</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Lurk with us</div><ul><li><a href="mailto:unspeakablyhorriblegames@gmail.com">Email us</a></li><li><a href="https://discord.gg/MKR3YYKRSZ" target="_blank" rel="noopener">Discord</a></li></ul></div>
+  </div>
+  <div class="site-footer__bar">
+    <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+    <div class="site-footer__bar-inner">&copy; <span id="yr"></span> Unspeakably Horrible Games &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; No eldritch entities were harmed. A few were mildly inconvenienced.</div>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="site.js"></script>
+<script>
+(function () {
+  "use strict";
+  var API = "https://cloud.unspeakablyhorriblegames.com";
+  // Game id → display name. One game today; extend as titles are added.
+  var GAMES = { "c83c5dd8-bf5d-45c5-958f-de626a16cf1b": "Insatiable" };
+  var acct = document.getElementById("acct");
+
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
+  function csrf() { try { var m = document.cookie.match(/(?:^|;\s*)uhg_csrf=([^;]+)/); return m ? decodeURIComponent(m[1]) : null; } catch (e) { return null; } }
+  function api(method, path, body) {
+    var opts = { method: method, credentials: "include", headers: {} };
+    if (body !== undefined) { opts.headers["content-type"] = "application/json"; opts.body = JSON.stringify(body); }
+    if (method === "DELETE" || method === "POST" || method === "PUT") { var t = csrf(); if (t) opts.headers["x-csrf-token"] = t; }
+    return fetch(API + path, opts).then(function (r) {
+      return r.text().then(function (t) { var d = null; try { d = t ? JSON.parse(t) : null; } catch (e) {} return { ok: r.ok, status: r.status, data: d }; });
+    }).catch(function () { return { ok: false, status: 0, data: null }; });
+  }
+  var toastEl = document.getElementById("toast"), toastT;
+  function toast(msg) { toastEl.textContent = msg; toastEl.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove("show"); }, 2600); }
+
+  function fmtTime(iso) {
+    var t = Date.parse(iso); if (!t) return "—";
+    try { return new Date(t).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return new Date(t).toISOString(); }
+  }
+  function copyMeta(m) {
+    m = m || {}; var p = [];
+    if (m.playthroughName) p.push(esc(m.playthroughName));
+    p.push("life " + (m.lives || 0));
+    if (m.squares != null) p.push(m.squares + " sq");
+    if (m.stratum) p.push(esc(m.stratum));
+    return p.join(" · ");
+  }
+
+  function render(me) {
+    if (!me) {
+      acct.innerHTML =
+        '<p class="lead">Your saves follow you here. Sign in with the same account you use in the game to see everything we’re holding for you — download a copy to any device, or delete what you don’t want us to keep.</p>' +
+        '<p class="muted">Signing in gives us nothing but an anonymous id — never your email or name. <a href="/privacy.html">How we handle it.</a></p>' +
+        '<div class="signin-row">' +
+          '<a class="btn btn--primary" href="' + API + '/auth/google?return=' + encodeURIComponent(location.href) + '">Sign in with Google</a>' +
+          '<a class="btn" href="' + API + '/auth/discord?return=' + encodeURIComponent(location.href) + '">Sign in with Discord</a>' +
+        '</div>';
+      return;
+    }
+    acct.innerHTML =
+      '<p class="who">Signed in with <strong>' + esc(me.provider === "discord" ? "Discord" : me.provider === "google" ? "Google" : me.provider) + '</strong>. ' +
+      '<a href="#" id="signout">Sign out</a></p>' +
+      '<div id="tree"><p class="muted">Loading your saves…</p></div>' +
+      '<div class="danger-zone">' +
+        '<h2>Delete everything</h2>' +
+        '<p class="muted">Removes every save we hold for you, across every game — immediately and permanently. This is the privacy promise; it cannot be undone.</p>' +
+        '<div class="zone__acts"><button class="btn btn--danger" id="nuke">Delete everything we hold</button></div>' +
+      '</div>';
+    document.getElementById("signout").addEventListener("click", function (e) { e.preventDefault(); api("POST", "/auth/logout").then(function () { location.reload(); }); });
+    document.getElementById("nuke").addEventListener("click", function () {
+      if (!window.confirm("Delete EVERYTHING we hold for you, across every game? This is permanent.")) return;
+      api("DELETE", "/saves").then(function (r) { toast(r.ok ? "Everything deleted." : "Delete failed."); loadTree(); });
+    });
+    loadTree();
+  }
+
+  function loadTree() {
+    var tree = document.getElementById("tree");
+    api("GET", "/saves").then(function (r) {
+      if (!r.ok) { tree.innerHTML = '<p class="empty">Couldn’t load your saves.</p>'; return; }
+      var games = (r.data && r.data.games) || [];
+      var used = games.filter(function (g) { return (g.slots || []).some(function (s) { return s.count; }); });
+      if (!used.length) { tree.innerHTML = '<p class="empty">You have no cloud saves stored.</p>'; return; }
+      tree.innerHTML = used.map(function (g) {
+        var vaults = (g.slots || []).filter(function (s) { return s.count; }).map(function (s) {
+          var label = s.name || s.slot;
+          return '<div class="vault" data-game="' + esc(g.game) + '" data-slot="' + esc(s.slot) + '" data-name="' + esc(label) + '">' +
+            '<div class="vault__head"><span class="vault__name">' + esc(label) + (s.active ? ' <span class="vault__pill">active</span>' : '') + '</span>' +
+            '<div class="vault__acts"><button class="btn btn--danger btn--sm" data-act="delvault">Delete this vault</button></div></div>' +
+            '<div class="copies"><p class="muted">Loading copies…</p></div></div>';
+        }).join("");
+        return '<div class="game-block"><h2>' + esc(GAMES[g.game] || g.game) + '</h2>' + vaults + '</div>';
+      }).join("");
+      Array.prototype.forEach.call(tree.querySelectorAll(".vault"), function (v) { loadCopies(v); });
+    });
+  }
+
+  function loadCopies(v) {
+    var game = v.getAttribute("data-game"), slot = v.getAttribute("data-slot"), vname = v.getAttribute("data-name");
+    var box = v.querySelector(".copies");
+    api("GET", "/saves/" + game + "/" + encodeURIComponent(slot)).then(function (r) {
+      var saves = (r.ok && r.data && r.data.saves) || [];
+      saves.sort(function (a, b) { return (Date.parse((b.meta || {}).savedAt) || 0) - (Date.parse((a.meta || {}).savedAt) || 0); });
+      if (!saves.length) { box.innerHTML = '<p class="muted">No copies.</p>'; return; }
+      box.innerHTML = saves.map(function (c) {
+        return '<div class="copy" data-id="' + esc(c.id) + '">' +
+          '<div class="copy__l"><div class="copy__time">' + esc(fmtTime((c.meta || {}).savedAt)) + '</div>' +
+          '<div class="copy__meta">' + copyMeta(c.meta) + '</div></div>' +
+          '<div class="copy__acts"><button class="btn btn--sm" data-act="download">Download</button>' +
+          '<button class="btn btn--danger btn--sm" data-act="delcopy">Delete</button></div></div>';
+      }).join("");
+    });
+    // one delegated handler per vault
+    v.addEventListener("click", function (e) {
+      var btn = e.target.closest("button[data-act]"); if (!btn) return;
+      var act = btn.getAttribute("data-act");
+      if (act === "delvault") {
+        if (!window.confirm('Delete the vault "' + vname + '" and all its copies?')) return;
+        api("DELETE", "/saves/" + game + "/" + encodeURIComponent(slot)).then(function (r) { toast(r.ok ? "Vault deleted." : "Delete failed."); loadTree(); });
+      } else {
+        var row = btn.closest(".copy"); var id = row.getAttribute("data-id");
+        if (act === "delcopy") {
+          if (!window.confirm("Delete this copy?")) return;
+          api("DELETE", "/saves/" + game + "/" + encodeURIComponent(slot) + "/" + encodeURIComponent(id)).then(function (r) { toast(r.ok ? "Copy deleted." : "Delete failed."); loadCopies(v); });
+        } else if (act === "download") {
+          api("GET", "/saves/" + game + "/" + encodeURIComponent(slot) + "/" + encodeURIComponent(id)).then(function (r) {
+            if (!r.ok || !r.data || !r.data.blob) { toast("Couldn’t fetch that save."); return; }
+            var stamp = ((r.data.meta || {}).savedAt || "").slice(0, 10);
+            var blob = new Blob([r.data.blob], { type: "text/plain" });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url; a.download = ((GAMES[game] || "save") + "-" + vname + "-" + stamp + ".txt").replace(/\s+/g, "-");
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+            toast("Downloaded — import it in the game’s Settings.");
+          });
+        }
+      }
+    });
+  }
+
+  api("GET", "/auth/me").then(function (r) { render(r.ok ? (r.data || {}) : null); });
+})();
+</script>
+</body>
+</html>
