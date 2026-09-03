@@ -15,7 +15,10 @@
 <style>
   .acct { max-width: 66ch; margin-top: var(--space-6); }
   .acct .lead { font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7; }
-  .acct .who { color: var(--text-muted); margin: var(--space-4) 0 var(--space-6); }
+  .acct .who { color: var(--text-muted); margin: var(--space-4) 0 var(--space-5); }
+  .support-id { margin: 0 0 var(--space-6); }
+  .support-id .muted { margin: 0 0 var(--space-2); }
+  .supportid { display: inline-block; font-family: var(--font-mono, ui-monospace, monospace); font-size: var(--text-sm); color: var(--text-strong); word-break: break-all; user-select: all; -webkit-user-select: all; }
   .acct .who strong { color: var(--text-strong); }
   .signin-row { display: flex; gap: var(--space-3); flex-wrap: wrap; margin: var(--space-5) 0; }
   .game-block { margin: var(--space-6) 0; }
@@ -134,6 +137,10 @@
     acct.innerHTML =
       '<p class="who">Signed in with <strong>' + esc(me.provider === "discord" ? "Discord" : me.provider === "google" ? "Google" : me.provider) + '</strong>. ' +
       '<a href="#" id="signout">Sign out</a></p>' +
+      '<div class="support-id">' +
+        '<p class="muted">Our support staff will need this ID if you ask us to delete your data for you.</p>' +
+        '<button class="btn btn--sm" id="showsid">Show Support ID</button> <code class="supportid" id="sidval" hidden></code>' +
+      '</div>' +
       '<div id="tree"><p class="muted">Loading your saves…</p></div>' +
       '<div class="danger-zone">' +
         '<h2>Delete everything</h2>' +
@@ -141,6 +148,7 @@
         '<div class="zone__acts"><button class="btn btn--danger" id="nuke">Delete everything we hold</button></div>' +
       '</div>';
     document.getElementById("signout").addEventListener("click", function (e) { e.preventDefault(); api("POST", "/auth/logout").then(function () { location.reload(); }); });
+    document.getElementById("showsid").addEventListener("click", function () { var c = document.getElementById("sidval"); c.textContent = me.sub || "—"; c.hidden = false; this.hidden = true; });
     document.getElementById("nuke").addEventListener("click", function () {
       if (!window.confirm("Delete EVERYTHING we hold for you, across every game? This is permanent.")) return;
       api("DELETE", "/saves").then(function (r) { toast(r.ok ? "Everything deleted." : "Delete failed."); loadTree(); });
