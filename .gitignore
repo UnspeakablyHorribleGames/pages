@@ -1,2 +1,6 @@
 # Local editor / tooling config — machine-specific, not part of the site.
 .claude/
+# Local build output and tool caches: Jekyll preview, Bundler lockfile, Cloudflare wrangler.
+_site/
+Gemfile.lock
+.wrangler/

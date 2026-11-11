@@ -1,7 +1,7 @@
-# Jekyll config — SCOPED TO THE DEVLOG (per #devlog spec).
+# Jekyll config — SCOPED TO THE DEVLOG (per #devlog spec) AND THE TOOLS SECTION.
 # The site is otherwise hand-authored static HTML: existing pages carry no front
-# matter and pass through byte-identical. Jekyll only processes _posts, the
-# devlog layout, the devlog index, and the two feed templates.
+# matter and pass through byte-identical. Jekyll only processes _posts, _tools,
+# their layouts, the devlog and tools indexes, and the two feed templates.
 
 title: Unspeakably Horrible Games
 description: Devlog and release notes from a small studio making cozy, cursed games.
@@ -10,6 +10,20 @@ baseurl: ""
 
 # Newest-first posts; permalinks under /devlog/.
 permalink: /devlog/:year/:month/:day/:title/
+
+# Side projects and tools: one file per tool in _tools/, served at /tools/<file name>/.
+# A tool's page URL is permanent, even if the tool later moves or becomes a product.
+collections:
+  tools:
+    output: true
+    permalink: /tools/:name/
+
+defaults:
+  - scope:
+      type: tools
+    values:
+      layout: tool
+      nav: games
 
 # Keep underscore-prefixed assets published (Jekyll excludes them by default).
 # _ds_bundle.js is used by the retired React demo; include it so nothing drops.
@@ -21,3 +35,6 @@ include:
 # front matter and pass through byte-identical).
 exclude:
   - "README-DEVLOG.md"
+  # Local preview only (see Gemfile). This list replaces Jekyll's defaults, so name them here.
+  - "Gemfile"
+  - "Gemfile.lock"

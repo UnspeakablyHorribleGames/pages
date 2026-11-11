@@ -1,0 +1,18 @@
+---
+layout: site
+---
+<article class="section" style="max-width: var(--container-md);">
+  <div class="eyebrow">Side Projects and Tools &middot; {{ page.group }}</div>
+  <h1 class="section-title">{{ page.title }}</h1>
+  <div class="devlog-meta">{{ page.platform }} &middot; {{ page.status }}</div>
+  {% if page.summary %}<p class="section-intro">{{ page.summary }}</p>{% endif %}
+  {% if page.links %}
+  <div class="tool-links">
+    {% for l in page.links %}<a class="btn {% if forloop.first %}btn--primary{% else %}btn--gilt{% endif %}" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}
+  </div>
+  {% endif %}
+  <div class="devlog-body">
+    {{ content }}
+  </div>
+  <p class="devlog-back"><a href="/tools/">&larr; All side projects and tools</a></p>
+</article>

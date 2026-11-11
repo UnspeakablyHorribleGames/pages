@@ -1,0 +1,33 @@
+---
+layout: site
+title: Side Projects and Tools
+description: Free side projects and tools from Unspeakably Horrible Games.
+permalink: /tools/
+nav: games
+---
+<section class="section">
+  <div class="eyebrow">Side projects</div>
+  <h1 class="section-title">Side Projects and Tools</h1>
+  <p class="section-intro">Between games, we build things. Some support the games we play, some tame the tools we use, and some exist because a desktop got out of hand, someone snapped, and sacrifices to the Dark Ones became necessary. Each was made for our own very particular problem, so it may or may not solve yours.</p>
+  <p class="section-intro">They're free, and they come with absolutely no warranty. Use them as they are, at your own risk; we accept no responsibility for anything you summon with them. The ones currently loose in the world are below.</p>
+  <p class="section-intro">If one earns its keep or you'd like to help feed the server minions that keep our games and side projects breathing their sickly ichor, feel free to use the PayPal tithe link at the bottom of every page. It goes to the studio's account, the Dark Ones see none of it, and it's entirely optional.</p>
+
+  {% assign groups = site.tools | sort: "order" | group_by: "group" %}
+  {% for g in groups %}
+  <h2 class="tools-group">{{ g.name }}</h2>
+  <div class="grid-auto">
+    {% for t in g.items %}
+    <a class="card card--interactive tool-card" href="{{ t.url }}">
+      <div class="card-body">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="badge badge--violet">{{ t.status }}</span>
+          <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-muted);">{{ t.platform }}</span>
+        </div>
+        <h3 class="card-title" style="font-size: var(--text-xl);">{{ t.title }}</h3>
+        <p class="card-text" style="font-size: var(--text-sm);">{{ t.summary }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</section>

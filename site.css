@@ -159,6 +159,11 @@ main { flex: 1; }
 .side-list li::marker { color: var(--brand-gold); }
 .side-list a { font-weight: var(--weight-semibold); }
 
+/* Tools section: /tools/ index cards grouped by game or platform, and the per-tool page's links. */
+.tools-group { font-family: var(--font-display); font-weight: 400; font-size: var(--text-xl); color: var(--text-strong); margin: var(--space-8) 0 var(--space-4); }
+.tool-card { display: block; color: inherit; text-decoration: none; }
+.tool-links { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-5); }
+
 .callout { margin-top: var(--space-7); padding: var(--space-5) var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--border-gilt); background: var(--surface-burgundy); text-align: center; }
 /* Heading matches the game-card titles (--text-xl) so the panel reads as a peer of the
    cards above it rather than as a second section header. */
