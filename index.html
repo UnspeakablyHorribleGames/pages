@@ -4,224 +4,112 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Unspeakably Horrible Games</title>
+<meta name="description" content="A small independent game studio making cozy, cursed little games. Cosmic terror, gentle jokes, and a mascot who means well." />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="site.css" />
+<script>try { document.documentElement.dataset.theme = localStorage.getItem("uhg-theme") || "dark"; } catch (e) {}</script>
 <style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; min-height: 100%; }
-  body {
-    background: var(--bg-page);
-    color: var(--text-body);
-    font-family: var(--font-body);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-  }
-  ::selection { background: var(--accent-soft); }
-  .atmos { position: fixed; inset: 0; pointer-events: none; }
-  .grain { position: fixed; inset: 0; pointer-events: none; background-image: var(--texture-grain); opacity: 0.06; mix-blend-mode: overlay; }
-  .glow { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(70% 90% at 50% -10%, rgba(159,190,59,0.12), transparent 55%); }
-  .vig { position: fixed; inset: 0; pointer-events: none; background: var(--vignette); }
-  main {
-    position: relative;
-    z-index: 2;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 48px 24px;
-  }
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--brand-gold);
-    margin-bottom: 28px;
-  }
-  .wordmark {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(46px, 9vw, 104px);
-    line-height: 0.96;
-    letter-spacing: -0.02em;
-    color: var(--text-strong);
-    margin: 0;
-  }
-  .wordmark em { font-style: normal; color: var(--text-accent); text-shadow: var(--glow-sm-absinthe); }
-  .games {
-    font-family: var(--font-mono);
-    font-size: clamp(12px, 2vw, 15px);
-    letter-spacing: .34em;
-    text-transform: uppercase;
-    color: var(--brand-gold);
-    margin: 18px 0 0;
-    padding-left: .5em;
-  }
-  .rule { width: 44px; height: 1px; background: var(--border-gilt); margin: 40px auto 34px; }
-  .status {
-    font-family: var(--font-grimoire);
-    font-style: italic;
-    font-size: clamp(20px, 3.4vw, 30px);
-    line-height: 1.4;
-    color: var(--text-body);
-    max-width: 22ch;
-    margin: 0 auto;
-  }
-  .sub {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    max-width: 46ch;
-    margin: 22px auto 0;
-  }
-  .contact {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 40px;
-    font-family: var(--font-ui);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: .02em;
-    color: var(--text-strong);
-    text-decoration: none;
-    padding: 13px 22px;
-    border: 1px solid var(--border-gilt);
-    border-radius: var(--radius-sm);
-    background: var(--surface-card);
-    transition: border-color var(--dur-fast, .15s) ease, color var(--dur-fast, .15s) ease, box-shadow var(--dur-fast, .15s) ease;
-  }
-  .contact { border-color: var(--border-gilt); box-shadow: 0 0 0 1px rgba(200,162,76,0.12), 0 0 18px -6px var(--glow-absinthe); }
-  .contact:hover { border-color: var(--accent); color: var(--text-accent); box-shadow: 0 0 0 1px var(--accent-soft), 0 0 26px -4px var(--glow-absinthe); }
-  .mascot {
-    position: fixed;
-    right: clamp(12px, 4vw, 60px);
-    bottom: -12px;
-    width: clamp(144px, 24vw, 232px);
-    opacity: 0.85;
-    z-index: 5;
-    filter: drop-shadow(0 6px 16px rgba(0,0,0,.55));
-    animation: uhg-drift 7s ease-in-out infinite;
-  }
-  footer {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 22px 24px 26px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border-subtle);
-    background: color-mix(in srgb, var(--surface-sunken) 60%, transparent);
-  }
-  @media (prefers-reduced-motion: reduce) { .mascot { animation: none; } }
-  .mascot { cursor: pointer; }
-  .eldy-bubble {
-    position: fixed;
-    right: clamp(12px, 4vw, 60px);
-    bottom: clamp(105px, 18vw, 170px);
-    max-width: 250px;
-    background: var(--surface-card);
-    color: var(--text-body);
-    border: 1px solid var(--border-gilt);
-    border-radius: 12px;
-    padding: 12px 15px;
-    font-family: var(--font-grimoire, Georgia, serif);
-    font-style: italic;
-    font-size: 15px;
-    line-height: 1.45;
-    box-shadow: 0 12px 34px rgba(0,0,0,.55);
-    opacity: 0;
-    transform: translateY(6px) scale(.98);
-    transform-origin: bottom right;
-    transition: opacity .25s ease, transform .25s ease;
-    pointer-events: none;
-    z-index: 6;
-  }
-  .eldy-bubble.show { opacity: 1; transform: translateY(0) scale(1); }
-  .eldy-bubble::after {
-    content: "";
-    position: absolute;
-    right: 30px;
-    bottom: -7px;
-    width: 12px;
-    height: 12px;
-    background: var(--surface-card);
-    border-right: 1px solid var(--border-gilt);
-    border-bottom: 1px solid var(--border-gilt);
-    transform: rotate(45deg);
-  }
+  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--border-subtle); }
+  .hero__glow { background: radial-gradient(80% 120% at 50% -10%, rgba(159,190,59,0.10), transparent 55%); }
+  .hero__grain { background-image: var(--texture-grain); opacity: .07; mix-blend-mode: soft-light; }
+  .hero__inner { position: relative; z-index: 1; max-width: var(--container-lg); margin: 0 auto; padding: var(--space-10) var(--space-6) var(--space-9); text-align: center; }
+  .hero__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; letter-spacing: -0.02em; color: var(--text-strong); margin: 0; }
+  .hero__title em { font-style: normal; color: var(--text-accent); text-shadow: var(--glow-sm-absinthe); }
+  .hero__sub { font-family: var(--font-body); font-size: var(--text-lg); color: var(--text-muted); line-height: 1.6; max-width: 48ch; margin: var(--space-5) auto 0; }
+  .hero__cta { display: flex; gap: var(--space-3); justify-content: center; margin-top: var(--space-7); flex-wrap: wrap; }
+  .mission-quote { font-family: var(--font-grimoire); font-style: italic; font-size: var(--text-2xl); line-height: 1.4; color: var(--text-body); max-width: 24ch; margin: var(--space-4) 0 0; }
+  .featured-card { margin-top: var(--space-6); display: grid; grid-template-columns: 300px 1fr; }
+  @media (max-width: 640px) { .featured-card { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-<template id="__bundler_thumbnail" data-bg-color="#0A0608">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#0A0608"/>
-    <text x="600" y="410" font-family="Georgia, serif" font-size="118" fill="#EDE4D3" text-anchor="middle">Unspeakably <tspan fill="#9FBE3B">Horrible</tspan></text>
-    <text x="600" y="492" font-family="monospace" font-size="34" fill="#C9A83B" text-anchor="middle" letter-spacing="18">GAMES</text>
-    <text x="600" y="612" font-family="Georgia, serif" font-size="72" fill="#9FBE3B" text-anchor="middle">❦</text>
-  </svg>
-</template>
 
-<div class="atmos"></div>
-<div class="glow"></div>
-<div class="grain"></div>
-<div class="vig"></div>
+<header class="site-header">
+  <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+  <div class="site-header__row">
+    <a class="wordmark" href="/"><span class="wordmark__name">Unspeakably <em>Horrible</em></span><span class="wordmark__tag">Games</span></a>
+    <nav class="site-nav">
+      <a href="/" aria-current="page">Home</a>
+      <a href="games.html">Games</a>
+      <a href="about.html">About</a>
+      <a href="team.html">The Coven</a>
+      <a href="/devlog/">Devlog</a>
+    </nav>
+    <div class="site-header__actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme"></button>
+      <a class="btn btn--primary" href="games.html">See Games</a>
+    </div>
+  </div>
+</header>
 
 <main>
-  <div class="eyebrow">An independent game studio · est. in a dim room</div>
-  <h1 class="wordmark">Unspeakably <em>Horrible</em></h1>
-  <div class="games">Games</div>
+  <section class="hero">
+    <div class="uhg-tx hero__glow"></div>
+    <div class="uhg-tx hero__grain"></div>
+    <div class="hero__inner">
+      <div class="eyebrow">An independent game studio · est. in a dim room</div>
+      <h1 class="hero__title">Small games about<br /><em>enormous horrors.</em></h1>
+      <p class="hero__sub">We are a few friends who make cozy, cursed little games. Cosmic terror, gentle jokes, and a mascot who means well. It's probably fine.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--lg" href="games.html">Browse the games</a>
+        <a class="btn btn--gilt btn--lg" href="about.html">Our mission</a>
+      </div>
+    </div>
+  </section>
 
-  <div class="rule"></div>
+  <section class="section" style="padding-bottom: var(--space-7);">
+    <div class="eyebrow">The mission, such as it is</div>
+    <h2 class="section-title">Make the horror cozy.</h2>
+    <p class="mission-quote">"Dread should feel like a warm blanket that is also, somehow, watching you."</p>
+  </section>
 
-  <p class="status">"A website is coming. So is a game."</p>
-  <p class="sub">We're a few friends making cozy, cursed little games. There's nothing to show just yet — but there will be. Probably fine.</p>
-
-  <a class="contact" href="mailto:unspeakablyhorrible@gmail.com">Say something unspeakable&nbsp;→</a>
+  <section class="section" style="padding-top: var(--space-5);">
+    <div class="eyebrow">Our debut</div>
+    <h2 class="section-title">Featured: Hungry Dark</h2>
+    <div class="card card--gilt featured-card">
+      <div class="cover cover--sq">
+        <div class="cover__mark">&#10086;</div>
+        <div class="cover__label">Key art placeholder</div>
+      </div>
+      <div class="card-body" style="padding: var(--space-7); justify-content: center;">
+        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
+          <span class="badge badge--violet">In Development</span>
+        </div>
+        <h3 class="card-title" style="font-size: var(--text-2xl);">Hungry Dark</h3>
+        <p class="card-text">You're not the hero — you're the thing in the dark that eats them. Play a hungry ooze: consume the dungeon, sprout new organs, and learn what you probably shouldn't.</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+          <span class="tag">Roguelike</span><span class="tag">Reverse Dungeon</span><span class="tag">Ooze 'em up</span>
+        </div>
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-5); flex-wrap: wrap;">
+          <button class="btn btn--primary" type="button" disabled title="Steam page coming soon">Wishlist soon</button>
+          <a class="btn btn--ghost" href="games.html">See all games</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<div class="eldy-bubble" id="eldyBubble" role="status" aria-live="polite"></div>
-<img class="mascot" src="assets/mascot-placeholder.png" alt="Eldy, the studio mascot" title="This is Eldy. He means well." />
-
-<footer>
-  © <span id="yr"></span> Unspeakably Horrible Games · No eldritch entities were harmed. A few were mildly inconvenienced.
+<footer class="site-footer">
+  <img class="site-footer__mascot" id="mascot" src="assets/mascot-placeholder.png" alt="Eldy, the studio mascot" title="This is Eldy. He means well." />
+  <div class="site-footer__cols">
+    <div>
+      <div class="site-footer__brand-name">Unspeakably Horrible Games</div>
+      <p class="site-footer__brand-blurb">Small games about enormous horrors. Made by a few friends in a dim room. Probably fine.</p>
+    </div>
+    <div class="footcol"><div class="footcol__h">Games</div><ul><li><a href="games.html">Hungry Dark</a></li><li><a href="games.html">Insatiable</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Studio</div><ul><li><a href="about.html">About</a></li><li><a href="team.html">The Coven</a></li><li><a href="/devlog/">Devlog</a></li></ul></div>
+    <div class="footcol"><div class="footcol__h">Lurk with us</div><ul><li><a href="mailto:unspeakablyhorriblegames@gmail.com">Email us</a></li><li><a href="https://discord.gg/MKR3YYKRSZ" target="_blank" rel="noopener">Discord</a></li><li><a href="/tithe.html">Tithe</a></li></ul></div>
+  </div>
+  <div class="site-footer__bar">
+    <div class="uhg-tx uhg-leather-base"></div><div class="uhg-tx uhg-l-broad"></div><div class="uhg-tx uhg-l-pore"></div><div class="uhg-tx uhg-grit uhg-nfine"></div>
+    <div class="site-footer__bar-inner">&copy; <span id="yr"></span> Unspeakably Horrible Games &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a> &middot; No eldritch entities were harmed. A few were mildly inconvenienced.</div>
+  </div>
 </footer>
 
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  // Eldy easter egg — click him and he says something.
-  (function () {
-    var lines = [
-      "You found me. Please don't tell the others.",
-      "A game is coming. I have seen it. It has too many teeth.",
-      "I'm Eldy. I do the emotional labor around here.",
-      "Wishlist us, or don't. The void is patient.",
-      "I mean well. Mostly.",
-      "One day you'll be able to ask me things. I'm practicing."
-    ];
-    var eldy = document.querySelector('.mascot');
-    var bubble = document.getElementById('eldyBubble');
-    var last = -1, timer;
-    if (eldy && bubble) {
-      eldy.addEventListener('click', function () {
-        var i; do { i = Math.floor(Math.random() * lines.length); } while (i === last && lines.length > 1);
-        last = i;
-        bubble.textContent = lines[i];
-        bubble.classList.add('show');
-        clearTimeout(timer);
-        timer = setTimeout(function () { bubble.classList.remove('show'); }, 4600);
-      });
-    }
-  })();
-</script>
+<div class="eldy-bubble" id="eldyBubble" role="status" aria-live="polite"></div>
+<script src="site.js"></script>
 </body>
 </html>
