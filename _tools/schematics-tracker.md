@@ -16,7 +16,7 @@ Oh, and if you haunt the testing stations with friends? It works out where your 
 ## What it does
 
 - Tracks which schematic grades you've learned, and how many copies you hold.
-- Imports what the dune.gaming.tools companion app reads (`known-recipes.json`).
+- Imports the Uniques and Augments exports from the dune.gaming.tools companion app (version 0.5.114 or later), the game's own record of what you've learned.
 - Shows where each item drops, the grades you still need, and the best run for them.
 - Filters by tier, type, and source, and can hide items you've finished.
 - A party view for planning runs as a group.
@@ -26,4 +26,4 @@ The tracker's own "How to use" panel covers every control.
 
 ## Your data
 
-Your list is saved in your browser. Sign in with Google or Discord only if you want to share it with friends you link with by invite code; the [privacy page](/privacy.html#sharing) spells out exactly what that stores.
+Your list is saved in your browser. Sign in with Google or Discord and it's also saved to the cloud, so you can share it with up to three friends you link with by invite code. Partners see your nickname, max levels, learned grades and favorites, never your copy counts. The [privacy page](/privacy.html#sharing) spells out exactly what's stored.
